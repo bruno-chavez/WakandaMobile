@@ -17,10 +17,23 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // Mis cambios que empeoran en vez de solucionar
+        /*switch ($guard) {
+            case 'division':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('division.dashboard');
+                }
+                break;
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('/home');
+                }
+                break;
+        }*/
+
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }
-
         return $next($request);
     }
 }

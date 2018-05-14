@@ -1,13 +1,15 @@
-Tarea 3 BD 2018-1
+# Tarea 3 BD 2018-1
 
 Bruno Chavez Lazo
+
 201573059-8
 
-Supuestos:
+## Supuestos:
 
 Para evitar el loguin de division y usuario al mismo tiempo, 
 al momento de estar logueado como uno, 
-no se podra acceder al loguin del otro, hasta cerrar secion.
+no se podra acceder al 
+loguin ni registro de ningun tipo de usuario.
 
 Al momento de registrar una division, 
 se pedira elegir un prefijo, 

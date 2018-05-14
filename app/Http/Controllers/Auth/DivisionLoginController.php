@@ -14,6 +14,13 @@ class DivisionLoginController extends Controller
     }
 
     public function showLoginForm() {
+        if (Auth::guard('web')->check()) {
+            return redirect()-back()->withInput();
+        }
+
+        if (Auth::guard('division')->check()) {
+            return redirect()->back()->withInput();
+        }
         return view('division.division_login');
     }
 

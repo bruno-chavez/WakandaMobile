@@ -31,6 +31,7 @@ class RedirectIfAuthenticated
                 break;
         }*/
 
+        #dd($guard);
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }

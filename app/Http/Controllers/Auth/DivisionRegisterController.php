@@ -24,11 +24,11 @@ class DivisionRegisterController extends Controller
     public function showRegistrationForm()
     {
         if (Auth::guard('web')->check()) {
-            return redirect()-back()->withInput();
+            return redirect()->route('home');
         }
 
         if (Auth::guard('division')->check()) {
-            return redirect()->back()->withInput();
+            return redirect()->route('division.dashboard');
         }
         return view('division.division_register');
     }

@@ -31,10 +31,20 @@ class RedirectIfAuthenticated
                 break;
         }*/
 
-        #dd($guard);
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+
+        // Funciona pero no con '/home'
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('home');
         }
+
+        if (Auth::guard('division')->check()) {
+            return redirect()->route('division.dashboard');
+        }
+
+        #dd($guard);
+        /*if (Auth::guard($guard)->check()) {
+            return redirect('/home');
+        }*/
         return $next($request);
     }
 }

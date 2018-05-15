@@ -23,6 +23,7 @@ class DivisionRegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
             return redirect()->route('home');
         }
@@ -55,6 +56,7 @@ class DivisionRegisterController extends Controller
      */
     public function create()
     {
+        // Valida los campos del registro antes de hacer una query.
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:divisions',
@@ -63,6 +65,7 @@ class DivisionRegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
+        // Es necesario hashear la contraseña antes de hacer un query.
         $queryFields = request(['name', 'email', 'prefix', 'division_name']);
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
 

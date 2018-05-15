@@ -17,22 +17,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // Mis cambios que empeoran en vez de solucionar
-        /*switch ($guard) {
-            case 'division':
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('division.dashboard');
-                }
-                break;
-            default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect()->route('/home');
-                }
-                break;
-        }*/
-
-
-        // Funciona pero no con '/home'
+        // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
             return redirect()->route('home');
         }
@@ -40,11 +25,6 @@ class RedirectIfAuthenticated
         if (Auth::guard('division')->check()) {
             return redirect()->route('division.dashboard');
         }
-
-        #dd($guard);
-        /*if (Auth::guard($guard)->check()) {
-            return redirect('/home');
-        }*/
         return $next($request);
     }
 }

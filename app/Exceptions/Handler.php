@@ -60,19 +60,16 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        // Mis cambios que empeoran en vez de solucionar
-        /*$guard = array_get($exception->guards(), 0);
+        // Verifica el tipo de guard al que pertenece y redirige acordemente.
+        $guard = array_get($exception->guards(), 0);
         switch ($guard){
             case 'division':
-                $login = 'division.division_login';
+                $login = 'division.login';
                 break;
-
             default:
-                $login = 'auth.login'
+                $login = 'login';
                 break;
         }
-        return redirect()->guest(route($login));*/
-
-        return redirect()->guest(route('login'));
+        return redirect()->guest(route($login));
     }
 }

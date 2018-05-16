@@ -39,7 +39,7 @@ class DivisionRegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'division.dashboard';
+    protected $redirectTo = 'division/login';
 
     /**
      * Create a new controller instance.

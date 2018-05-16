@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use Hash;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -20,14 +22,12 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
-
     /**
-     * Where to redirect divisions after registration.
+     * Where to redirect after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'division';
 
     /**
      * Create a new controller instance.
@@ -36,36 +36,43 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth:division');
     }
 
+    public function showRegistrationForm()
+    {
+        // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('home');
+        }
+
+        return view('auth.register');
+    }
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function create()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $this->validate(request(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:divisions',
+            'password' => 'required|string|min:6|confirmed',
         ]);
+
+        // Es necesario hashear la contraseña antes de hacer un query.
+        $queryFields = request(['name', 'email']);
+        $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
+
+        User::create($queryFields);
+        return redirect(route('division.dashboard'));
     }
 }

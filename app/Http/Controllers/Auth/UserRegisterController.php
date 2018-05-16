@@ -7,7 +7,7 @@ use Hash;
 use App\User;
 use App\Http\Controllers\Controller;
 
-class RegisterController extends Controller
+class UserRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ class RegisterController extends Controller
             return redirect()->route('user.dashboard');
         }
 
-        return view('auth.register');
+        return view('auth.user_register');
     }
     /**
      * Create a new user instance after a valid registration.

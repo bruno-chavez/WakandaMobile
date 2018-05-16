@@ -48,7 +48,7 @@ class DivisionRegisterController extends Controller
         $this->validate(request(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:divisions',
-            'prefix' => 'required|numeric|max:6|unique:divisions',
+            'prefix' => 'required|numeric|unique:divisions',
             'division_name' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);

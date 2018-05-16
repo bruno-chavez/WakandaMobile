@@ -22,6 +22,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.user_dashboard');
+        return view('auth.user_dashboard');
     }
 }

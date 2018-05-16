@@ -11,10 +11,10 @@ la contraseña debe tener un minimo de 6 caracteres.
 
 Al momento de registrar una division, 
 se pedira elegir un prefijo, 
-el cual es un numero de maximo 6 cifras y es unico, 
-estas condiciones son verificadas por la pagina y 
-no dejara continuar con el registro si estos 
-requisitos no se cumplen.
+el cual tiene que ser un numero unico, 
+esta condicion es verificada por la pagina y 
+no dejara continuar con el registro si esta 
+condicion no se cumple.
 
 No habra una checkmark de "Remember Me" 
 al momento de hacer loguin de usuario ni division.

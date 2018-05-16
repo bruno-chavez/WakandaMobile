@@ -17,34 +17,34 @@ Route::get('/', function () {
 });
 
 // Rutas de Login de usuario.
-Route::get('login', [
-    'as' => 'login',
-    'uses' => 'Auth\LoginController@showLoginForm'
+Route::get('user/login', [
+    'as' => 'user.login',
+    'uses' => 'Auth\UserLoginController@showLoginForm'
 ]);
-Route::post('login', [
+Route::post('user/login', [
     'as' => '',
-    'uses' => 'Auth\LoginController@login'
+    'uses' => 'Auth\UserLoginController@login'
 ]);
-Route::post('logout', [
-    'as' => 'logout',
-    'uses' => 'Auth\LoginController@logout'
+Route::post('user/logout', [
+    'as' => 'user.logout',
+    'uses' => 'Auth\UserLoginController@logout'
 ]);
 
 // Rutas de registro de usuario, bloqueadas por el guard de division.
-Route::get('register', [
-    'as' => 'register',
-    'uses' => 'Auth\RegisterController@showRegistrationForm'
+Route::get('user/register', [
+    'as' => 'user.register',
+    'uses' => 'Auth\UserRegisterController@showRegistrationForm'
 ]);
-Route::post('register', [
+Route::post('user/register', [
     'as' => '',
-    'uses' => 'Auth\RegisterController@create'
+    'uses' => 'Auth\UserRegisterController@create'
 ]);
 
-Route::get('/user','UserController@index')->name('user.dashboard');
+Route::get('user','UserController@index')->name('user.dashboard');
 
 // Rutas de division.
-Route::get('/division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');
-Route::post('/division/login', 'Auth\DivisionLoginController@login')->name('division.login.submit');
-Route::get('/division/register', 'Auth\DivisionRegisterController@showRegistrationForm')->name('division.register');
-Route::post('/division/register', 'Auth\DivisionRegisterController@create')->name('division.register.submit');
-Route::get('/division', 'DivisionController@index')->name('division.dashboard');
+Route::get('division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');
+Route::post('division/login', 'Auth\DivisionLoginController@login')->name('division.login.submit');
+Route::get('division/register', 'Auth\DivisionRegisterController@showRegistrationForm')->name('division.register');
+Route::post('division/register', 'Auth\DivisionRegisterController@create')->name('division.register.submit');
+Route::get('division', 'DivisionController@index')->name('division.dashboard');

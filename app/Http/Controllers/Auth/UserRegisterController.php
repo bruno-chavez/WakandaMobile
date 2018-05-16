@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Division;
 use Auth;
 use Hash;
 use App\User;

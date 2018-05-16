@@ -48,3 +48,4 @@ Route::post('division/login', 'Auth\DivisionLoginController@login')->name('divis
 Route::get('division/register', 'Auth\DivisionRegisterController@showRegistrationForm')->name('division.register');
 Route::post('division/register', 'Auth\DivisionRegisterController@create')->name('division.register.submit');
 Route::get('division', 'DivisionController@index')->name('division.dashboard');
+Route::get('division/userslist', 'UsersListController@index')->name('division.usersList');

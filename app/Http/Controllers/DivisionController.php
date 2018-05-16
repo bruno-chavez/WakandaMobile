@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Division;
-use App\User;
 use Auth;
 
 class DivisionController extends Controller

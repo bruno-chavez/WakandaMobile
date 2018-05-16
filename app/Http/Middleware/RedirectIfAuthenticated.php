@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
-            return redirect()->route('home');
+            return redirect()->route('user.dashboard');
         }
 
         if (Auth::guard('division')->check()) {

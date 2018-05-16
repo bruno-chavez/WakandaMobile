@@ -16,11 +16,11 @@ class DivisionLoginController extends Controller
     public function showLoginForm() {
         // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
-            return redirect()-back()->withInput();
+            return redirect()->route('user.dashboard');
         }
 
         if (Auth::guard('division')->check()) {
-            return redirect()->back()->withInput();
+            return redirect()->route('division.dashboard');
         }
         return view('division.division_login');
     }

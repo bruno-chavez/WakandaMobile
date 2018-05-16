@@ -6,8 +6,6 @@ use Auth;
 use Hash;
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -17,8 +15,7 @@ class RegisterController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | validation and creation.
     |
     */
 
@@ -39,21 +36,16 @@ class RegisterController extends Controller
         $this->middleware('auth:division');
     }
 
+    // Muestra la view de registro si esta correctamente autentificado.
     public function showRegistrationForm()
     {
         // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
-            return redirect()->route('home');
+            return redirect()->route('user.dashboard');
         }
 
         return view('auth.register');
     }
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     /**
      * Create a new user instance after a valid registration.
      *
@@ -73,6 +65,6 @@ class RegisterController extends Controller
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
 
         User::create($queryFields);
-        return redirect(route('division.dashboard'));
+        return redirect()->route('division.dashboard');
     }
 }

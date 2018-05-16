@@ -29,8 +29,6 @@ Route::post('logout', [
     'as' => 'logout',
     'uses' => 'Auth\LoginController@logout'
 ]);
-Route::get('/home','HomeController@index')->name('home');
-
 
 // Rutas de registro de usuario, bloqueadas por el guard de division.
 Route::get('register', [
@@ -42,6 +40,7 @@ Route::post('register', [
     'uses' => 'Auth\RegisterController@create'
 ]);
 
+Route::get('/user','UserController@index')->name('user.dashboard');
 
 // Rutas de division.
 Route::get('/division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');

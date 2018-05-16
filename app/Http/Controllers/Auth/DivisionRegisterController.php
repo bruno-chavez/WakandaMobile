@@ -5,27 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Division;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 
 class DivisionRegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     public function showRegistrationForm()
     {
         // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
         if (Auth::guard('web')->check()) {
-            return redirect()->route('home');
+            return redirect()->route('user.dashboard');
         }
 
         if (Auth::guard('division')->check()) {
@@ -35,7 +23,7 @@ class DivisionRegisterController extends Controller
     }
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect divisions after registration.
      *
      * @var string
      */
@@ -52,7 +40,7 @@ class DivisionRegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new division instance after a valid registration.
      */
     public function create()
     {

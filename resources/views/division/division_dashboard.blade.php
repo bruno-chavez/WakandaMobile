@@ -8,8 +8,12 @@
 
                 </head>
                 <body>
+                <a href="{{ url('user/register') }}">Create Users</a>
                 @component('components.who')
                 @endcomponent
+
+                Cantidad de usuarios: {{$count}}
+
                 </body>
             </html>
 @endsection

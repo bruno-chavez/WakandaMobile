@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Division;
 use Auth;
 use Hash;
 use App\User;
@@ -43,7 +44,6 @@ class UserRegisterController extends Controller
         if (Auth::guard('web')->check()) {
             return redirect()->route('user.dashboard');
         }
-
         return view('auth.user_register');
     }
     /**
@@ -63,7 +63,7 @@ class UserRegisterController extends Controller
         // Es necesario hashear la contraseña antes de hacer un query.
         $queryFields = request(['name', 'email']);
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
-
+        $queryFields = array_add($queryFields,'division_id', Auth::id());
         User::create($queryFields);
         return redirect()->route('division.dashboard');
     }

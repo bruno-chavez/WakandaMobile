@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Division;
+use App\User;
+use Auth;
+
 class DivisionController extends Controller
 {
     /**
@@ -22,6 +26,12 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        return view('division.division_dashboard');
+        $users = Division::find(Auth::id())->users;
+        $count = 0;
+        foreach ($users as $user) {
+                $count += 1;
+            }
+
+        return view('division.division_dashboard', compact('count'));
     }
 }

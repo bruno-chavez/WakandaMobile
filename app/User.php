@@ -9,13 +9,16 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function division() {
+        return $this->belongsTo(User::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'division_id',
     ];
 
     /**

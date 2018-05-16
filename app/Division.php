@@ -9,6 +9,10 @@ class Division extends Authenticatable
 {
     use Notifiable;
 
+    public function users() {
+        return $this->hasMany(User::class);
+    }
+
     protected $guard = 'division';
 
     /**

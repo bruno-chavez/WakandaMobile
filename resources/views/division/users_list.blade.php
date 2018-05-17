@@ -11,7 +11,7 @@
                 @endcomponent
                 @foreach($users as $user)
                     <article>
-                        {{$user->name}}
+                        <a href="{{ url('division/userslist/' . $user->id) }}">{{$user->name}}</a>
                         {{$user->email}}
                     </article>
                 @endforeach

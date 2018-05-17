@@ -49,3 +49,6 @@ Route::get('division/register', 'Auth\DivisionRegisterController@showRegistratio
 Route::post('division/register', 'Auth\DivisionRegisterController@create')->name('division.register.submit');
 Route::get('division', 'DivisionController@index')->name('division.dashboard');
 Route::get('division/userslist', 'UsersListController@index')->name('division.usersList');
+Route::get('division/userslist/{user}', 'UserInfoController@index')->name('division.userInfo');
+Route::delete('division/userslist/{id}', 'UserInfoController@delete')->name('division.userInfo.delete');
+Route::patch('division/userslist/{id}', 'UserInfoController@update')->name('division.userInfo.update');

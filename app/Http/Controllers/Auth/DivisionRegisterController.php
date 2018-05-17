@@ -47,7 +47,7 @@ class DivisionRegisterController extends Controller
         // Valida los campos del registro antes de hacer una query.
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:divisions',
+            'email' => 'required|string|email|max:255|unique:divisions|unique:users',
             'prefix' => 'required|numeric|unique:divisions',
             'division_name' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',

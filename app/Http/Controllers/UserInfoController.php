@@ -28,7 +28,8 @@ class UserInfoController extends Controller
 
         $this->validate(request(), [
             'name' => 'string|max:255',
-            'email' => 'string|email|max:255|unique:divisions',
+            'email' => 'string|email|max:255|unique:divisions|unique:users',
+            'rut' => 'integer|unique:users'
         ]);
 
 

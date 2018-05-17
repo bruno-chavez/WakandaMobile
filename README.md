@@ -25,10 +25,15 @@ de una division o usuario no hay manera de recuperarla.
 ## Rutas:
 Todas las rutas han sido verificadas y se detallan 
 a continuacion, si una ruta no esta especificada 
-para un tipo de "usuario", significa que no tienen acceso 
-a esta, 
-ejemplo: una division autenticada no tiene acceso a '/user'
-#### Acceso de invitados, usuarios y divisiones:
+para un tipo de "usuario" (invitado, usuario, division), 
+significa que no tienen acceso 
+a esta y sera redireccionado 
+al dashboard acorde al tipo de usuario.
+
+Ejemplo: una division autenticada no tiene acceso a '/user'
+y sera redireccionado a '/division' 
+si intenta acceder a esta manualmente.
+#### Acceso para invitados, usuarios y divisiones:
 
 '/'
 
@@ -38,12 +43,16 @@ ejemplo: una division autenticada no tiene acceso a '/user'
 
 '/division/register'
 
-#### Acceso a usuarios autenticados:
+#### Acceso para usuarios autenticados:
 
 '/user'
 
-#### Acceso a divisiones autenticadas:
+#### Acceso para divisiones autenticadas:
 
 '/division'
+
+'/division/userslist'
+
+'/division/userslist/{user_id}'
 
 '/user/register'

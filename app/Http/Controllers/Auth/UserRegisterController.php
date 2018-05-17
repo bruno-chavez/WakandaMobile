@@ -55,12 +55,13 @@ class UserRegisterController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:divisions',
+            'rut' => 'required|integer|unique:users',
+            'email' => 'required|string|email|max:255|unique:users|unique:divisions',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
         // Es necesario hashear la contraseña antes de hacer un query.
-        $queryFields = request(['name', 'email']);
+        $queryFields = request(['name', 'rut', 'email']);
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
         $queryFields = array_add($queryFields,'division_id', Auth::id());
         User::create($queryFields);

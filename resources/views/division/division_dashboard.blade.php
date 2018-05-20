@@ -8,13 +8,13 @@
 
                 </head>
                 <body>
-                <a href="{{ url('user/register') }}">Create Users</a>
-                <a href="{{ url('division/userslist') }}">Users List</a>
+                <p> <a href="{{ url('user/register') }}">Create Users</a> </p>
+                <p> <a href="{{ url('division/userslist') }}">Users List</a> </p>
 
-                @component('components.who')
-                @endcomponent
 
-                Cantidad de usuarios: {{$count}}
+                <p> Total de usuarios: {{ $totalUsers }} </p>
+                <p> Total de numeros: {{ $totalNumbers }} </p>
+                <p> Total de numeros activados: {{ $activatedNumbers }} </p>
 
                 </body>
             </html>

@@ -7,11 +7,28 @@
             <meta charset="UTF-8">
         </head>
         <body>
-            @component('components.who')
-            @endcomponent
-            {{ $user->name }}
-            {{ $user->email }}
-            {{ $user->rut }}
+
+            <p> Nombre: {{ $user->name }} </p>
+            <p> Email: {{ $user->email }} </p>
+            <p> RUT: {{ $user->rut }} </p>
+
+
+            @foreach($user->number as $number)
+                @if ($number->deactivated == false)
+                    <article>
+                        {{ $number->number }} Activado
+                    </article>
+                @else
+                    <article>
+                        {{ $number->number }} Desactivado
+                    </article>
+                @endif
+            @endforeach
+
+            <a href="{{ route('division.number', $user->id) }}">
+                <button>Create New Number</button>
+            </a>
+
             <form method="POST" action="{{ route('division.userInfo.delete', $user->id ) }}">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}

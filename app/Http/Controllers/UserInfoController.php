@@ -21,6 +21,9 @@ class UserInfoController extends Controller
 
         $id = intval($id);
         $user = User::find($id);
+        foreach ($user->number as $number) {
+            $number->delete();
+        }
         $user->delete();
         return redirect()->route('division.usersList');
     }

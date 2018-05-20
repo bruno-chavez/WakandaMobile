@@ -42,13 +42,26 @@ Route::post('user/register', [
 
 Route::get('user','UserController@index')->name('user.dashboard');
 
-// Rutas de division.
+
+// Login Division:
 Route::get('division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');
 Route::post('division/login', 'Auth\DivisionLoginController@login')->name('division.login.submit');
+
+// Registro de Division.
 Route::get('division/register', 'Auth\DivisionRegisterController@showRegistrationForm')->name('division.register');
 Route::post('division/register', 'Auth\DivisionRegisterController@create')->name('division.register.submit');
+
+// Dashboard de Division.
 Route::get('division', 'DivisionController@index')->name('division.dashboard');
+
+// Lista de Usuarios.
 Route::get('division/userslist', 'UsersListController@index')->name('division.usersList');
+
+// Informacion especifica de cada usuario.
 Route::get('division/userslist/{user}', 'UserInfoController@index')->name('division.userInfo');
 Route::delete('division/userslist/{id}', 'UserInfoController@delete')->name('division.userInfo.delete');
 Route::patch('division/userslist/{id}', 'UserInfoController@update')->name('division.userInfo.update');
+
+// Creacion de Numeros
+Route::get('division/userslist/{user}/number', 'NumberController@showNumberForm')->name('division.number');
+Route::post('division/userslist/{user}/number', 'NumberController@create')->name('division.number.submit');

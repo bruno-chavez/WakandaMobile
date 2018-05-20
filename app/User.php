@@ -10,7 +10,11 @@ class User extends Authenticatable
     use Notifiable;
 
     public function division() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Division::class);
+    }
+
+    public function number() {
+        return $this->hasMany(Number::class);
     }
     /**
      * The attributes that are mass assignable.

@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        @component('components.who')
-                        @endcomponent
+
+                        <p>{{ Auth::user()->name }}</p>
+                        <p>{{ Auth::user()->email }}</p>
+                        <p>{{ Auth::user()->rut }}</p>
+                        <p>Usuario de division: {{ Auth::user()->division->division_name }}</p>
+
+                        @foreach(Auth::user()->number as $number)
+                            <article>
+                                {{$number->number}}
+                                @if ($number->deactivated)
+                                    Desactivado
+                                @else Activado
+                                @endif
+
+                            </article>
+                        @endforeach
                 </div>
             </div>
         </div>

@@ -27,7 +27,6 @@
 
                                 <label for="number" class="col-md-offset-4 control-label">Create Number</label>
 
-                                <input type="hidden" name="column" value="rut">
                                 <input id="number" type="text" class="form-control" name="number" value="{{ old('number') }}">
                                 <button type="submit">
                                     Create

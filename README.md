@@ -37,22 +37,26 @@ si intenta acceder a esta manualmente.
 
 '/'
 
+#### Acceso solo para invitados:
+
 '/user/login'
 
 '/division/login'
 
 '/division/register'
 
-#### Acceso para usuarios autenticados:
+#### Acceso solo para usuarios:
 
 '/user'
 
-#### Acceso para divisiones autenticadas:
+#### Acceso solo para divisiones:
 
 '/division'
 
 '/division/userslist'
 
 '/division/userslist/{user_id}'
+
+'/division/userslist/{user_id}/number'
 
 '/user/register'

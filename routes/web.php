@@ -59,8 +59,8 @@ Route::get('division/userslist', 'UsersListController@index')->name('division.us
 
 // Informacion especifica de cada usuario.
 Route::get('division/userslist/{user}', 'UserInfoController@index')->name('division.userInfo');
-Route::delete('division/userslist/{id}', 'UserInfoController@delete')->name('division.userInfo.delete');
-Route::patch('division/userslist/{id}', 'UserInfoController@update')->name('division.userInfo.update');
+Route::delete('division/userslist/{user}', 'UserInfoController@delete')->name('division.userInfo.delete');
+Route::patch('division/userslist/{user}', 'UserInfoController@update')->name('division.userInfo.update');
 
 // Creacion de Numeros
 Route::get('division/userslist/{user}/number', 'NumberController@showNumberForm')->name('division.number');

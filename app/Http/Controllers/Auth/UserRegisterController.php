@@ -39,10 +39,7 @@ class UserRegisterController extends Controller
     // Muestra la view de registro si esta correctamente autentificado.
     public function showRegistrationForm()
     {
-        // Verifica el tipo de guard al que corresponda el request y redirige acordemente.
-        if (Auth::guard('web')->check()) {
-            return redirect()->route('user.dashboard');
-        }
+
         return view('auth.user_register');
     }
     /**

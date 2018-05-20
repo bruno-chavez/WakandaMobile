@@ -17,17 +17,16 @@ class UserInfoController extends Controller
         return view('division.user_info', compact('user'));
     }
 
-    public function delete($id) {
+    public function delete(User $user) {
 
-        $id = intval($id);
-        $user = User::find($id);
+        //Elimina los numeros asociados al usuario antes de eliminar al usuario.
         foreach ($user->number as $number) {
             $number->delete();
         }
         $user->delete();
         return redirect()->route('division.usersList');
     }
-    public function update($id){
+    public function update(User $user){
 
         $this->validate(request(), [
             'name' => 'string|max:255',
@@ -35,11 +34,9 @@ class UserInfoController extends Controller
             'rut' => 'integer|unique:users'
         ]);
 
-
+        //column es el dato que se quiere cambiar del usuario, e input es el nuevo valor de ese dato.
         $column = Input::get('column');
         $input = Input::get($column);
-        #dd(Input::all());
-        $user = User::find($id);
 
         $user->$column = $input;
         $user->save();

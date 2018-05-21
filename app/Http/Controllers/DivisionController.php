@@ -43,11 +43,7 @@ class DivisionController extends Controller
                 }
         }
 
-        $statistics = [];
-        $statistics = array_add($statistics, 'totalUsers', $totalUsers);
-        $statistics = array_add($statistics, 'totalNumbers', $totalNumbers);
-        $statistics = array_add($statistics, 'activatedNumbers', $activatedNumbers);
-
-        return view('division.division_dashboard', $statistics);
+        return view('division.division_dashboard',
+            compact('totalUsers', 'totalNumbers', 'activatedNumbers'));
     }
 }

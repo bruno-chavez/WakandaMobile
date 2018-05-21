@@ -62,6 +62,10 @@ Route::get('division/userslist/{user}', 'UserInfoController@index')->name('divis
 Route::delete('division/userslist/{user}', 'UserInfoController@delete')->name('division.userInfo.delete');
 Route::patch('division/userslist/{user}', 'UserInfoController@update')->name('division.userInfo.update');
 
-// Creacion de Numeros
-Route::get('division/userslist/{user}/number', 'NumberController@showNumberForm')->name('division.number');
-Route::post('division/userslist/{user}/number', 'NumberController@create')->name('division.number.submit');
+// Creacion de Numeros.
+Route::get('division/userslist/{user}/create', 'NumberController@showCreationForm')->name('division.number');
+Route::post('division/userslist/{user}/create', 'NumberController@create')->name('division.number.create');
+
+// Desactivacion de Numeros.
+Route::get('division/userslist/{user}/{number}', 'NumberController@showStatusForm')->name('division.number.status');
+Route::patch('division/userslist/{user}/{number}', 'NumberController@changeStatus')->name('division.number.changeStatus');

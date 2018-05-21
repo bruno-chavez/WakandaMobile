@@ -13,8 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                            <form class="form-horizontal" method="POST" action="{{ route('division.number.submit', $user->id) }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('division.number.create', $user->id) }}">
                                 {{ csrf_field() }}
 
                                 @if ($errors->has('number'))

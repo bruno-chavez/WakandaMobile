@@ -16,11 +16,15 @@
             @foreach($user->number as $number)
                 @if ($number->deactivated == false)
                     <article>
-                        {{ $number->number }} Activado
+                        <p> <a href="{{ route('division.number.status',
+                        ['user' => $user->id, 'number' => $number->id]) }}">
+                                {{ $number->number }} </a> Activado </p>
                     </article>
                 @else
                     <article>
-                        {{ $number->number }} Desactivado
+                        <p> <a href="{{ route('division.number.status',
+                        ['user' => $user->id, 'number' => $number->id]) }}">
+                                {{ $number->number }} </a> Desactivado </p>
                     </article>
                 @endif
             @endforeach

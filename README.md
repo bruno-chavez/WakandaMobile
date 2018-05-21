@@ -57,6 +57,8 @@ si intenta acceder a esta manualmente.
 
 '/division/userslist/{user_id}'
 
-'/division/userslist/{user_id}/number'
+'/division/userslist/{user_id}/create'
+
+'/division/userslist/{user_id}/{number_id}'
 
 '/user/register'

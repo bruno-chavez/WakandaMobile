@@ -8,8 +8,8 @@
 
                 </head>
                 <body>
-                <p> <a href="{{ url('user/register') }}">Create Users</a> </p>
-                <p> <a href="{{ url('division/userslist') }}">Users List</a> </p>
+                <p> <a href="{{ route('user.register') }}">Create Users</a> </p>
+                <p> <a href="{{ route('division.usersList') }}">Users List</a> </p>
 
 
                 <p> Total de usuarios: {{ $totalUsers }} </p>

@@ -30,7 +30,7 @@ Route::post('user/logout', [
     'uses' => 'Auth\UserLoginController@logout'
 ]);
 
-// Rutas de registro de usuario, bloqueadas por el guard de division.
+// Rutas de registro de usuario.
 Route::get('user/register', [
     'as' => 'user.register',
     'uses' => 'Auth\UserRegisterController@showRegistrationForm'
@@ -40,8 +40,12 @@ Route::post('user/register', [
     'uses' => 'Auth\UserRegisterController@create'
 ]);
 
+// Dashboard de Usuario.
 Route::get('user','UserController@index')->name('user.dashboard');
 
+// Portabilidad de Usuario.
+Route::get('user/portability', 'CreatePortabilityController@showPortabilityForm')->name('user.portability');
+Route::patch('user/portability', 'CreatePortabilityController@create')->name('user.portability.submit');
 
 // Login Division:
 Route::get('division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');
@@ -53,6 +57,9 @@ Route::post('division/register', 'Auth\DivisionRegisterController@create')->name
 
 // Dashboard de Division.
 Route::get('division', 'DivisionController@index')->name('division.dashboard');
+
+// Aprobacion de Portabilidad.
+Route::patch('division/{port}/{division}/{status}', 'PortabilityController@changeStatus')->name('division.portability.status');
 
 // Lista de Usuarios.
 Route::get('division/userslist', 'UsersListController@index')->name('division.usersList');

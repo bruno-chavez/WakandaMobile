@@ -7,8 +7,6 @@
                     <meta charset="UTF-8">
                 </head>
                 <body>
-                @component('components.who')
-                @endcomponent
                 @foreach($users as $user)
                     <article>
                         <a href="{{ route('division.userInfo', $user->id) }}"> {{ $user->name }} </a>

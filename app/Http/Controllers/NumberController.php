@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Number;
 use App\User;
-use Illuminate\Support\Facades\Input;
 
 class NumberController extends Controller
 {
@@ -28,7 +27,7 @@ class NumberController extends Controller
         request()['number'] = $number;
 
         $this->validate(request(), [
-            'number' => 'required|integer|unique:numbers',
+            'number' => 'required|string|size:10|unique:numbers',
         ]);
 
         $queryFields = [];
@@ -58,7 +57,7 @@ class NumberController extends Controller
                 'note' => 'required|string|max:255',
             ]);
 
-            $number->note = Input::get('note');
+            $number->note = request('note');
             $number->deactivated = 1;
             $number->save();
         }

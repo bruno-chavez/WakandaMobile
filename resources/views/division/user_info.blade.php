@@ -8,23 +8,22 @@
         </head>
         <body>
 
-            <p> Nombre: {{ $user->name }} </p>
+            <p> Name: {{ $user->name }} </p>
             <p> Email: {{ $user->email }} </p>
             <p> RUT: {{ $user->rut }} </p>
 
 
             @foreach($user->number as $number)
-                @if ($number->deactivated == false)
+                @if ($number->deactivated)
                     <article>
-                        <p> <a href="{{ route('division.number.status',
-                        ['user' => $user->id, 'number' => $number->id]) }}">
-                                {{ $number->number }} </a> Activado </p>
-                    </article>
+                    <p> {{ $number->number }}<a href="{{ route('division.number.status',
+                        ['user' => $user->id, 'number' => $number->id]) }}"> Deactivated </a></p>
+                </article>
+
                 @else
                     <article>
-                        <p> <a href="{{ route('division.number.status',
-                        ['user' => $user->id, 'number' => $number->id]) }}">
-                                {{ $number->number }} </a> Desactivado </p>
+                        <p> {{ $number->number }} <a href="{{ route('division.number.status',
+                        ['user' => $user->id, 'number' => $number->id]) }}"> Activated </a></p>
                     </article>
                 @endif
             @endforeach
@@ -54,6 +53,7 @@
                     Update
                 </button>
             </form>
+
             <form class="form-horizontal" method="POST" action="{{ route('division.userInfo.update', $user->id) }}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}

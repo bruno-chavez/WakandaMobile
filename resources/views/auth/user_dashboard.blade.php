@@ -17,14 +17,15 @@
                         <p>{{ Auth::user()->name }}</p>
                         <p>{{ Auth::user()->email }}</p>
                         <p>{{ Auth::user()->rut }}</p>
-                        <p>Usuario de division: {{ Auth::user()->division->division_name }}</p>
+                        <p>User of division: {{ Auth::user()->division->division_name }}</p>
+                        <p> <a href="{{ route('user.portability') }}"> Port </a> </p>
 
-                        @foreach(Auth::user()->number as $number)
+                    @foreach(Auth::user()->number as $number)
                             <article>
                                 {{$number->number}}
                                 @if ($number->deactivated)
-                                    Desactivado
-                                @else Activado
+                                    Deactivated
+                                @else Activated
                                 @endif
 
                             </article>

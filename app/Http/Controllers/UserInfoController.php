@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Portability;
 use App\User;
 use Illuminate\Support\Facades\Input;
 
@@ -19,11 +20,14 @@ class UserInfoController extends Controller
 
     public function delete(User $user) {
 
-        //Elimina los numeros asociados al usuario antes de eliminar al usuario.
+        //Elimina los numeros y a portabilidad, asociados al usuario antes de eliminar al usuario.
         foreach ($user->number as $number) {
             $number->delete();
         }
+        $port = Portability::where('user_id', $user->id)->first();
+        $port->delete();
         $user->delete();
+
         return redirect()->route('division.usersList');
     }
     public function update(User $user){

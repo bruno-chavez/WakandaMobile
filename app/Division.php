@@ -11,8 +11,12 @@ class Division extends Authenticatable
         return $this->hasMany(User::class);
     }
 
-    public function portabilities() {
+    public function from_portabilities() {
         return $this->hasMany(Portability::class, 'old_division_id');
+    }
+
+    public function to_portabilities() {
+        return $this->hasMany(Portability::class, 'new_division_id');
     }
 
     protected $guard = 'division';

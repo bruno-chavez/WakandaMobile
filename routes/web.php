@@ -58,8 +58,9 @@ Route::post('division/register', 'Auth\DivisionRegisterController@create')->name
 // Dashboard de Division.
 Route::get('division', 'DivisionController@index')->name('division.dashboard');
 
-// Aprobacion de Portabilidad.
-Route::patch('division/{port}/{division}/{status}', 'PortabilityController@changeStatus')->name('division.portability.status');
+// Aprobacion y Declinacion de Portabilidad.
+Route::patch('division/{port}/{division}/approve', 'PortabilityController@approve')->name('division.portability.approve');
+Route::delete('division/{port}/decline', 'PortabilityController@decline')->name('division.portability.decline');
 
 // Lista de Usuarios.
 Route::get('division/userslist', 'UsersListController@index')->name('division.usersList');

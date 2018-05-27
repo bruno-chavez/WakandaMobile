@@ -58,6 +58,9 @@ class DivisionRegisterController extends Controller
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
 
         Division::create($queryFields);
+
+        session()->flash('message', 'Division successfully created.');
+
         return redirect(route('division.login'));
     }
 }

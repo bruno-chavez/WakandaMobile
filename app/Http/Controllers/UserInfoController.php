@@ -28,6 +28,8 @@ class UserInfoController extends Controller
         $port->delete();
         $user->delete();
 
+        session()->flash('message', 'User deleted succesfuly');
+
         return redirect()->route('division.usersList');
     }
     public function update(User $user){
@@ -38,12 +40,20 @@ class UserInfoController extends Controller
             'rut' => 'integer|unique:users'
         ]);
 
-        //column es el dato que se quiere cambiar del usuario, e input es el nuevo valor de ese dato.
+        // column es el dato que se quiere cambiar del usuario
+        // input es el nuevo valor de ese dato.
         $column = Input::get('column');
         $input = Input::get($column);
 
         $user->$column = $input;
         $user->save();
+
+        // Envia una laerta si se actualiza un dato correctamente.
+        // Formatea el mensaje para que empieze con mauyscula.
+        $message = $column . ' successfully updated.';
+        $message = ucfirst($message);
+        session()->flash('message', $message);
+
         return redirect()->route('division.userInfo', $user->id);
     }
 }

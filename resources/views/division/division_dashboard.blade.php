@@ -24,9 +24,7 @@
                             <th> New Division </th>
                         </tr>
 
-                        @foreach( \App\Portability::all() as $port)
-                            @if($port->old_division->division_name == Auth::user()->division_name or
-                            $port->new_division->division_name == Auth::user()->division_name)
+                        @foreach( Auth::user()->portabilities as $port)
                                 <tr>
                                     <td> {{ $port->user->name }} </td>
                                     <td> {{ $port->old_division->division_name }} </td>
@@ -48,7 +46,6 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endif
                         @endforeach
                     </table>
                 </body>

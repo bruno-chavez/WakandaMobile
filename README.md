@@ -8,6 +8,12 @@ Bruno Sebastian Chavez Lazo
 Este archivo tiene formato Markdown, 
 para visualizarlo correctamente es necesario verlo como tal.
 
+## Suposiciones:
+
+Se asume que el rut es correcto, 
+no se verificara nada respecto a 
+ruts al momento de crear usuarios.
+
 ## Condiciones especificas de mi tarea:
 
 Al momento de registrar usuarios y divisiones,

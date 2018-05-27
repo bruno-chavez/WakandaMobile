@@ -36,6 +36,8 @@ class NumberController extends Controller
         $queryFields = array_add($queryFields,'user_id', $user->id);
         Number::create($queryFields);
 
+        session()->flash('message', 'Number created correctly.');
+
         return redirect(route('division.userInfo', $user->id));
     }
 

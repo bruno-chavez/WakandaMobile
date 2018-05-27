@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Division extends Authenticatable
@@ -10,6 +9,10 @@ class Division extends Authenticatable
 
     public function users() {
         return $this->hasMany(User::class);
+    }
+
+    public function portabilities() {
+        return $this->hasMany(Portability::class, 'old_division_id');
     }
 
     protected $guard = 'division';

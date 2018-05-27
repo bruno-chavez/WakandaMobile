@@ -22,6 +22,7 @@ class PortabilityController extends Controller
                 $port->old_division_approval = '1';
             } else {
                 $port->delete();
+                session()->flash('message', 'Portability successfully declined.');
                 return redirect()->route('division.dashboard');
             }
         }
@@ -31,6 +32,7 @@ class PortabilityController extends Controller
             }
             else {
                 $port->delete();
+                session()->flash('message', 'Portability successfully declined.');
                 return redirect()->route('division.dashboard');
             }
         }
@@ -39,16 +41,20 @@ class PortabilityController extends Controller
         if($port->old_division_approval and $port->new_division_approval) {
             $port->user->division_id = $port->new_division->id;
             $port->user->save();
+
             foreach ($port->user->number as $number) {
                 $number->number = substr($number->number, -7);
                 $number->number = $port->   new_division->prefix . $number->number;
                 $number->save();
             }
+
             $port->delete();
+            session()->flash('message', 'Portability successfully approved by both divisions.');
             return redirect()->route('division.dashboard');
         }
         else {
             $port->save();
+            session()->flash('message', 'Portability successfully approved.');
             return redirect()->route('division.dashboard');
         }
     }

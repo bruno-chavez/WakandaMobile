@@ -62,6 +62,9 @@ class UserRegisterController extends Controller
         $queryFields = array_add($queryFields, 'password', Hash::make(request('password')));
         $queryFields = array_add($queryFields,'division_id', Auth::id());
         User::create($queryFields);
+
+        session()->flash('message', 'User successfully created.');
+
         return redirect()->route('division.dashboard');
     }
 }

@@ -36,6 +36,8 @@ class CreatePortabilityController extends Controller
         $queryFields = array_add($queryFields, 'new_division_id', $new_division->id);
         Portability::create($queryFields);
 
+        session()->flash('message', 'Portability form successfully created .');
+
         return redirect(route('user.dashboard'));
     }
 

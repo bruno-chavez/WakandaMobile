@@ -73,7 +73,13 @@
 
         @if(session('message'))
             <div class="alert alert-success" role="alert">
-                {{session('message')}}
+                {{ session('message') }}
+            </div>
+        @endif
+
+        @if(session('wrong'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('wrong') }}
             </div>
         @endif
 

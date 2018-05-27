@@ -36,6 +36,9 @@ Al momento de crear un numero este
 tendra que ser de siete digitos, 
 requisito verificado por la aplicacion.
 
+Un usuario no podra ingresar una nueva 
+portabilidad si ya hay una pendiente.
+
 ## Vistas:
 Todas las rutas han sido verificadas y se detallan 
 a continuacion, si una ruta no esta especificada 

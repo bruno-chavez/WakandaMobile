@@ -17,7 +17,9 @@ class CreatePortabilityController extends Controller
 
         foreach(Portability::all() as $port) {
             if($port->user_id == Auth::id()) {
-                return view('auth.denied_portability');
+
+                session()->flash('wrong', 'Pending portability for this user.');
+                return redirect(route('user.dashboard'));
             }
         }
 
@@ -25,7 +27,6 @@ class CreatePortabilityController extends Controller
     }
 
     public function create() {
-
 
         $user = Auth::user();
         $new_division = Division::where('division_name', request('division'))->first();

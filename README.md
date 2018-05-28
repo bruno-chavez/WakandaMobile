@@ -4,27 +4,33 @@ Bruno Sebastian Chavez Lazo
 
 201573059-8
 
-
 Este archivo tiene formato Markdown, 
-para visualizarlo correctamente es necesario verlo como tal.
+para una correcta visualizacion, 
+abra el archivo como tal.
+
+Por comodidad y conveniencia el proyecto esta 
+programado en ingles por preferencia propia y 
+debido a la syntaxis que requiere Laravel,
+ademas para que no parezca spanglish 
+la pagina web tambien estara en ingles en su totalidad.
 
 ## Suposiciones:
 
 Se asume que el rut es correcto, 
-no se verificara nada respecto a 
-ruts al momento de crear usuarios.
+se verifica muy poco respecto a estos.
 
 ## Condiciones especificas de mi tarea:
+Estas condiciones no son suposiciones, 
+ya que son verificadas por la aplicacion, 
+sin embargo las menciono para mayor claridad
+sobre partes especificas de la tarea.
 
 Al momento de registrar usuarios y divisiones,
 la contraseña debe tener un minimo de 6 caracteres.
 
 Al momento de registrar una division, 
 se pedira elegir un prefijo, 
-el cual tiene que ser un numero unico, de tres digitos,
-estas condiciones son verificadas por la aplicacion y 
-no dejara continuar con el registro si esta 
-condicion no se cumple.
+el cual tiene que ser un numero unico y tener tres digitos.
 
 No habra una checkmark de "Remember Me" 
 al momento de hacer loguin de usuario ni division.
@@ -33,8 +39,7 @@ En el caso de que se olvide una contraseña
 de una division o usuario no hay manera de recuperarla.
 
 Al momento de crear un numero este 
-tendra que ser de siete digitos, 
-requisito verificado por la aplicacion.
+tendra que ser de siete digitos.
 
 Un usuario no podra ingresar una nueva 
 portabilidad si ya hay una pendiente.
@@ -47,7 +52,7 @@ significa que no tienen acceso
 a esta y sera redireccionado 
 al dashboard acorde al tipo de usuario.
 
-Ejemplo: una division autenticada no tiene acceso a '/user'
+Ejemplo: una division no tiene acceso a '/user'
 y sera redireccionado a '/division' 
 si intenta acceder a esta manualmente.
 

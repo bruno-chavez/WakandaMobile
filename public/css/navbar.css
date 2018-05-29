@@ -1,41 +1,12 @@
-body {
-    min-height: 75rem;
-    padding-top: 4.5rem;
+div {
+    background-color: white;
+    color: black;
 }
 
+.nav-link {
+    background-color: #343a40;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.collapse{
+    background-color: #343a40;
+}

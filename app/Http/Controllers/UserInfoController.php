@@ -24,8 +24,11 @@ class UserInfoController extends Controller
         foreach ($user->number as $number) {
             $number->delete();
         }
+
         $port = Portability::where('user_id', $user->id)->first();
-        $port->delete();
+        if ($port != null) {
+            $port->delete();
+        }
         $user->delete();
 
         session()->flash('message', 'User deleted succesfuly');

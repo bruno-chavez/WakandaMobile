@@ -38,6 +38,8 @@ class DivisionLoginController extends Controller
             $request->remember)) {
             return redirect()->intended(route('division.dashboard'));
         }
+
+        session()->flash('wrong', 'These credentials do not match our records.');
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 }

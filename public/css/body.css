@@ -1,0 +1,11 @@
+body {
+    min-height: 60rem;
+    padding-top: 4.5rem;
+}
+
+html body {
+    background-image: url("/images/blackPanther4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

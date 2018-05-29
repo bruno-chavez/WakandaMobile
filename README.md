@@ -41,8 +41,8 @@ de una division o usuario no hay manera de recuperarla.
 Al momento de crear un numero este 
 tendra que ser de siete digitos.
 
-Un usuario no podra ingresar una nueva 
-portabilidad si ya hay una pendiente.
+Un usuario no podra registrar una nueva 
+portabilidad si ya tiene una pendiente.
 
 ## Vistas:
 Todas las rutas han sido verificadas y se detallan 

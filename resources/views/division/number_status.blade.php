@@ -5,8 +5,6 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> Dashboard
-                    </div>
                     <div class="panel-body">
 
                         @if (session('status'))
@@ -16,16 +14,26 @@
                         @endif
 
                         @if ($number->deactivated)
+
+                            <blockquote class="blockquote text-left">
+                                <h1> Activate number </h1>
+                            </blockquote>
+
                             <form class="form-horizontal" method="POST"
                                   action="{{ route('division.number.changeStatus',
                                         ['user' => $user->id, 'number' => $number->id]) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
 
-                                <button type="submit"> Activate </button>
+                                <button class="btn" type="submit"> Activate </button>
                             </form>
 
                             @else
+
+                                <blockquote class="blockquote text-left">
+                                    <h1> Deactivate Number </h1>
+                                </blockquote>
+
                                 <form class="form-horizontal" method="POST"
                                       action="{{ route('division.number.changeStatus',
                                             ['user' => $user->id, 'number' => $number->id]) }}">
@@ -33,9 +41,8 @@
                                     {{ method_field('PATCH') }}
 
                                     <label for="note" class="col-md-offset-4 control-label"> Note </label>
-                                    <input id="note" type="text" class="form-control" name="note"
-                                           value="{{ old('note') }}" required>
-                                    <button type="submit"> Deactivate </button>
+                                    <input id="note" type="text" class="form-control" name="note" required>
+                                    <button class="btn" type="submit"> Deactivate </button>
                                 </form>
                             @endif
                     </div>

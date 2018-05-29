@@ -6,7 +6,9 @@
 
 @section('content')
 
-    <div class="panel-heading"> Division Log In</div>
+    <blockquote class="blockquote text-center">
+        <h1> Division Log In </h1>
+    </blockquote>
 
     <form class="form-signin" method="POST" action="{{route('division.login.submit')}}">
         {{ csrf_field() }}

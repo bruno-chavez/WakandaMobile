@@ -17,18 +17,9 @@
                               action="{{ route('division.number.create', $user->id) }}">
                             {{ csrf_field() }}
 
-                            @if ($errors->has('number'))
-                                <span class="help-block">
-                                    <strong>
-                                        {{ $errors->first('number') }}
-                                    </strong>
-                                </span>
-                            @endif
-
                             <label for="number" class="col-md-offset-4 control-label">Create Number</label>
-                            <input id="number" type="text" class="form-control" name="number"
-                                   value="{{ old('number') }}">
-                            <button type="submit"> Create </button>
+                            <input id="number" type="text" class="form-control" name="number">
+                            <button class="btn" type="submit"> Create </button>
                         </form>
                     </div>
                 </div>

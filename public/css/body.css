@@ -4,8 +4,31 @@ body {
 }
 
 html body {
-    background-image: url("/images/blackPanther4.jpg");
+    background-image: url("/images/blackPanther.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+
+.btn {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    color: #ffffff;
+    font-size: 15px;
+    background: #3498db;
+    padding: 12px 20px 10px 20px;
+    text-decoration: none;
+
+}
+
+.btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
 }

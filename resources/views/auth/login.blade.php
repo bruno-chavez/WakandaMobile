@@ -2,6 +2,7 @@
 
 @section('styles')
     <link href="/css/login.css" rel="stylesheet">
+    <link href="/css/form.css" rel="stylesheet">
 @endsection
 
 @section('content')

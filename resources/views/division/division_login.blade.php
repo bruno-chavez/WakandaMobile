@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('styles')
+    <link href="/css/form.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
 @endsection
 
@@ -14,8 +15,7 @@
         {{ csrf_field() }}
 
         <div class="form-label-group">
-            <input id="email" type="email" class="form-control" name="email" placeholder="Email address"
-                   value="{{ old('email') }}" required autofocus>
+            <input id="email" type="email" class="form-control" name="email" placeholder="Email address" required autofocus>
             <label for="email">Email address</label>
         </div>
 
@@ -23,6 +23,7 @@
             <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
             <label for="password">Password</label>
         </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
     </form>
 

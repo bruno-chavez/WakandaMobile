@@ -1,38 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <h3> Statistics: </h3>
+    <ul>
+        <li> User name: {{ Auth::user()->name }} </li>
+        <li> User email: {{ Auth::user()->email }} </li>
+        <li> User rut: {{ Auth::user()->rut }} </li>
+        <li> User of division: {{ Auth::user()->division->division_name }} </li>
+    </ul>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    @if(count(Auth::user()->number))
+        <div style="overflow-x:auto;">
+            <blockquote class="blockquote text-left">
+                <h4> Numbers: </h4>
+            </blockquote>
 
-                        <p>{{ Auth::user()->name }}</p>
-                        <p>{{ Auth::user()->email }}</p>
-                        <p>{{ Auth::user()->rut }}</p>
-                        <p>User of division: {{ Auth::user()->division->division_name }}</p>
-                        <p> <a href="{{ route('user.portability') }}"> Port </a> </p>
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col"> # </th>
+                    <th scope="col"> Number </th>
+                    <th scope="col"> Status</th>
+                    <th scope="col"> Reason of deactivation </th>
+                </tr>
+                </thead>
 
-                    @foreach(Auth::user()->number as $number)
-                            <article>
-                                {{$number->number}}
-                                @if ($number->deactivated)
-                                    Deactivated
-                                @else Activated
-                                @endif
-
-                            </article>
-                        @endforeach
-                </div>
-            </div>
+                <tbody>
+                @php($count = 1)
+                @foreach( Auth::user()->number as $number)
+                    <tr>
+                        <th scope="row">{{$count}} </th>
+                        <td> {{ $number->number }} </td>
+                        <td>
+                            @if ($number->deactivated)
+                                Deactivated
+                            @else
+                                Activated
+                            @endif
+                        </td>
+                        <td>
+                            @if ($number->deactivated)
+                                {{$number->note}}
+                            @else
+                                -
+                            @endif
+                        </td>
+                    </tr>
+                    @php($count++)
+                @endforeach
+                </tbody>
+            </table>
         </div>
-    </div>
-</div>
+    @else
+        <h3> This user does not have any numbers. </h3>
+    @endif
+
+    <h3> Click the button below to request a change of division: </h3>
+    <a href="{{ route('user.portability') }}"> <button class="btn"> Port</button> </a>
 @endsection

@@ -1,29 +1,23 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading"> Dashboard
-                    </div>
-                    <div class="panel-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <form class="form-horizontal" method="POST"
-                              action="{{ route('division.number.create', $user->id) }}">
-                            {{ csrf_field() }}
+@section('styles')
+    <link href="/css/form.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
+@endsection
 
-                            <label for="number" class="col-md-offset-4 control-label">Create Number</label>
-                            <input id="number" type="text" class="form-control" name="number">
-                            <button class="btn" type="submit"> Create </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+@section('content')
+    <form class="form-signin" method="POST" action="{{ route('division.number.create', $user->id) }}">
+        {{ csrf_field() }}
+
+        <blockquote class="blockquote text-left">
+            The number must be 7 digits long and unique
+        </blockquote>
+
+        <div class="form-label-group">
+            <input id="number" type="text" class="form-control" name="number" placeholder="Number" required autofocus>
+            <label for="number">Number</label>
         </div>
-    </div>
+
+        <button class="btn" type="submit"> Create </button>
+    </form>
 @endsection

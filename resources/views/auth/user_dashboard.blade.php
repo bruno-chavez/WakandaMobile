@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <h3> Welcome back {{ Auth::user()->name }}! </h3>
     <h3> Statistics: </h3>
     <ul>
-        <li> User name: {{ Auth::user()->name }} </li>
         <li> User email: {{ Auth::user()->email }} </li>
         <li> User rut: {{ Auth::user()->rut }} </li>
         <li> User of division: {{ Auth::user()->division->division_name }} </li>
@@ -30,7 +30,7 @@
                 @foreach( Auth::user()->number as $number)
                     <tr>
                         <th scope="row">{{$count}} </th>
-                        <td> {{ $number->number }} </td>
+                        <td> {{ Auth::user()->division->prefix . $number->number }} </td>
                         <td>
                             @if ($number->deactivated)
                                 Deactivated
@@ -56,7 +56,8 @@
     @endif
 
     @if(count(\App\Portability::where('user_id', Auth::id())))
-        <h3> Details of current portability:</h3>
+        <h3> Details of current request:</h3>
+        Remember that you can only request one change of company at a time.
         @php($port = \App\Portability::where('user_id', Auth::id())->first())
         <ul>
             @if ($port->old_division_approval)

@@ -18,12 +18,6 @@ class PortabilityController extends Controller
             $port->user->division_id = $port->new_division->id;
             $port->user->save();
 
-            foreach ($port->user->number as $number) {
-                $number->number = substr($number->number, -7);
-                $number->number = $port->   new_division->prefix . $number->number;
-                $number->save();
-            }
-
             $port->delete();
             session()->flash('message', 'Portability successfully approved by both divisions.');
             return true;

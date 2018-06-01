@@ -37,7 +37,7 @@
                     @foreach( $user->number as $number)
                         <tr>
                             <th scope="row">{{$count}} </th>
-                            <td> {{ $number->number }} </td>
+                            <td> {{ Auth::user()->prefix . $number->number }} </td>
                             <td>
                                 @if ($number->deactivated)
                                    Deactivated

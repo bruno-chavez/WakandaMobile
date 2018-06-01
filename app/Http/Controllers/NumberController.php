@@ -20,14 +20,8 @@ class NumberController extends Controller
 
     public function create(User $user) {
 
-        // El prefijo es añadido antes de validar ya que todos los numeros en la tabla numeros estan con prefijo.
-        $number = request('number');
-        $prefix = strval(Auth::user()->prefix);
-        $number = $prefix . $number;
-        request()['number'] = $number;
-
         $this->validate(request(), [
-            'number' => 'required|string|size:10|unique:numbers',
+            'number' => 'required|number|size:7|unique:numbers',
         ]);
 
         $queryFields = [];

@@ -55,7 +55,7 @@
         <h3> This user does not have any numbers. </h3>
     @endif
 
-    @if(count(\App\Portability::where('user_id', Auth::id())))
+    @if(\App\Portability::where('user_id', Auth::id())->first() != null)
         <h3> Details of current request:</h3>
         Remember that you can only request one change of company at a time.
         @php($port = \App\Portability::where('user_id', Auth::id())->first())

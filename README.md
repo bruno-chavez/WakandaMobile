@@ -16,8 +16,9 @@ la pagina web tambien estara en ingles en su totalidad.
 
 ## Suposiciones:
 
-Se asume que el rut es correcto, 
-se verifica muy poco respecto a estos.
+La aplicacion solo verifica que el rut tenga 8 u 9 digitos 
+y que sea un numero, no se verifica el digito verificador,
+se asume que el rut es valido en cualquier otro sentido
 
 ## Condiciones especificas de mi tarea:
 Estas condiciones no son suposiciones, 
@@ -43,6 +44,10 @@ tendra que ser de siete digitos.
 
 Un usuario no podra registrar una nueva 
 portabilidad si ya tiene una pendiente.
+
+No hay manera de cambiar ningun dato sobre una division.
+
+No hay manera de cambiar la contraseña de un usuario.
 
 ## Vistas:
 Todas las rutas han sido verificadas y se detallan 

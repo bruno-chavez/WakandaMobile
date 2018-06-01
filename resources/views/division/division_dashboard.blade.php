@@ -45,7 +45,11 @@
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
 
-                                <button class="btn" type="submit"> Approve </button>
+                                @if($port->old_division_approval)
+                                    <button class="btn" type="submit" disabled> Approve </button>
+                                @else
+                                    <button class="btn" type="submit"> Approve </button>
+                                @endif
                             </form>
                         </td>
                         <td> <form class="form-horizontal" method="POST"
@@ -99,7 +103,11 @@
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
 
-                                <button class="btn" type="submit"> Approve </button>
+                                @if($port->new_division_approval)
+                                        <button class="btn" type="submit" disabled> Approve </button>
+                                @else
+                                    <button class="btn" type="submit"> Approve </button>
+                                @endif
                             </form>
                         </td>
                         <td> <form class="form-horizontal" method="POST"

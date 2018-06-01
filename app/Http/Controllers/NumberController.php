@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Number;
 use App\User;
 
@@ -21,11 +20,10 @@ class NumberController extends Controller
     public function create(User $user) {
 
         $this->validate(request(), [
-            'number' => 'required|number|size:7|unique:numbers',
+            'number' => 'required|integer|digits:7|unique:numbers',
         ]);
 
-        $queryFields = [];
-        $queryFields = array_add($queryFields, 'number', $number);
+        $queryFields = ['number' => request('number')];
         $queryFields = array_add($queryFields, 'note', '');
         $queryFields = array_add($queryFields,'user_id', $user->id);
         Number::create($queryFields);

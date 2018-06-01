@@ -2,6 +2,7 @@
 
 @section('content')
 
+    <h3>Hi {{ Auth::user()->name }} remember that you are managing {{ Auth::user()->division_name }}. </h3>
     <h3> Statistics: </h3>
     <ul>
         <li> Total users: {{ $totalUsers }} </li>

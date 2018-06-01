@@ -30,7 +30,7 @@ la contraseña debe tener un minimo de 6 caracteres.
 
 Al momento de registrar una division, 
 se pedira elegir un prefijo, 
-el cual tiene que ser un numero unico y tener tres digitos.
+el cual es un numero unico y debe tener tres digitos.
 
 No habra una checkmark de "Remember Me" 
 al momento de hacer loguin de usuario ni division.

@@ -55,6 +55,24 @@
         <h3> This user does not have any numbers. </h3>
     @endif
 
-    <h3> Click the button below to request a change of division: </h3>
-    <a href="{{ route('user.portability') }}"> <button class="btn"> Port</button> </a>
+    @if(count(\App\Portability::where('user_id', Auth::id())))
+        <h3> Details of current portability:</h3>
+        @php($port = \App\Portability::where('user_id', Auth::id())->first())
+        <ul>
+            @if ($port->old_division_approval)
+                <li> {{ $port->old_division->division_name }} has accepted the change of division </li>
+            @else
+                <li> {{ $port->old_division->division_name }} has yet to accept or decline the change of division </li>
+            @endif
+
+            @if ($port->new_division_approval)
+                <li> {{ $port->new_division->division_name }} has accepted the change of division </li>
+            @else
+                <li> {{ $port->new_division->division_name }} has yet to accept or decline the change of division </li>
+            @endif
+        </ul>
+    @else
+        <h3> Click the button below to request a change of division: </h3>
+        <a href="{{ route('user.portability') }}"> <button class="btn"> Port</button> </a>
+    @endif
 @endsection

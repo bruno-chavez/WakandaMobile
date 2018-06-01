@@ -17,7 +17,6 @@ class CreatePortabilityController extends Controller
 
         foreach(Portability::all() as $port) {
             if($port->user_id == Auth::id()) {
-
                 session()->flash('wrong', 'Pending portability for this user.');
                 return redirect(route('user.dashboard'));
             }

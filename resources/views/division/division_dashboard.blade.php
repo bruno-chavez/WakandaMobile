@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h3>Hi {{ Auth::user()->name }} remember that you are managing {{ Auth::user()->division_name }}. </h3>
+    <h3> Hi {{ Auth::user()->name }} remember that you are managing {{ Auth::user()->division_name }}. </h3>
     <h3> Statistics: </h3>
     <ul>
         <li> Total users: {{ $totalUsers }} </li>
@@ -46,13 +46,15 @@
                                 {{ method_field('PATCH') }}
 
                                 @if($port->old_division_approval)
-                                    <button class="btn" type="submit" disabled> Approve </button>
+                                    <button class="btn" type="submit" title="You have already approved this request."
+                                            disabled> Approve </button>
                                 @else
                                     <button class="btn" type="submit"> Approve </button>
                                 @endif
                             </form>
                         </td>
-                        <td> <form class="form-horizontal" method="POST"
+                        <td>
+                            <form class="form-horizontal" method="POST"
                                    action="{{ route('division.portability.decline', $port->id) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -72,7 +74,6 @@
 
     @if(count(Auth::user()->to_portabilities))
         <div style="overflow-x:auto;">
-
             <blockquote class="blockquote text-left">
                 <h3> Users wanting to enter the division: </h3>
             </blockquote>
@@ -97,14 +98,17 @@
                         <td> {{ $port->user->name }} </td>
                         <td> {{ $port->old_division->division_name }} </td>
                         <td> {{ $port->new_division->division_name }} </td>
-                        <td> <form class="form-horizontal" method="POST"
+                        <td>
+                            <form class="form-horizontal" method="POST"
                                    action="{{ route('division.portability.approve',
                                       ['port' => $port->id, 'division' => Auth::id()]) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
 
                                 @if($port->new_division_approval)
-                                        <button class="btn" type="submit" disabled> Approve </button>
+                                        <button class="btn" type="submit"
+                                                title="You have already approved this request."
+                                                disabled> Approve </button>
                                 @else
                                     <button class="btn" type="submit"> Approve </button>
                                 @endif

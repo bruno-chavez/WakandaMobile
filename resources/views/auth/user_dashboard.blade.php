@@ -73,7 +73,8 @@
             @endif
         </ul>
     @else
-        <h3> Click the button below to request a change of division: </h3>
+
+        <h3> Request a change of division: </h3>
         <a href="{{ route('user.portability') }}"> <button class="btn"> Port</button> </a>
     @endif
 @endsection

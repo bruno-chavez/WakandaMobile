@@ -45,7 +45,7 @@ Route::get('user','UserController@index')->name('user.dashboard');
 
 // Portabilidad de Usuario.
 Route::get('user/portability', 'CreatePortabilityController@showPortabilityForm')->name('user.portability');
-Route::patch('user/portability', 'CreatePortabilityController@create')->name('user.portability.submit');
+Route::post('user/portability', 'CreatePortabilityController@create')->name('user.portability.submit');
 
 // Login Division:
 Route::get('division/login', 'Auth\DivisionLoginController@showLoginForm')->name('division.login');

@@ -26,7 +26,7 @@ class UserInfoController extends Controller
         }
 
         $port = Portability::where('user_id', $user->id)->first();
-        if ($port != null) {
+        if ($port !== null) {
             $port->delete();
         }
         $user->delete();

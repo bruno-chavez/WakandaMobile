@@ -17,7 +17,7 @@
         <select name="division">
             <label for="name"></label>
             @foreach (\App\Division::all() as $division)
-                @if(Auth::user()->division->division_name == $division->division_name)
+                @if(Auth::user()->division->division_name === $division->division_name)
                     @continue
                 @endif
                     <option value="{{ $division->division_name }}"> {{ $division->division_name }} </option>

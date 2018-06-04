@@ -30,7 +30,7 @@ class PortabilityController extends Controller
     public function approve(Portability $port, Division $division) {
 
         // Determina si la request es de la nueva o vieja division.
-        if($division->id == $port->old_division_id) {
+        if($division->id === $port->old_division_id) {
             $port->old_division_approval = '1';
         }
         else {

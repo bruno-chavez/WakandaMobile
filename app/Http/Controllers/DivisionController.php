@@ -36,7 +36,7 @@ class DivisionController extends Controller
                 $totalUsers += 1;
                 $numbers = $user->number;
                 foreach ($numbers as $number) {
-                    if ($number->deactivated == false) {
+                    if ($number->deactivated === false) {
                         $activatedNumbers += 1;
                     }
                     $totalNumbers += 1;

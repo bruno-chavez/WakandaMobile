@@ -14,7 +14,8 @@
         </blockquote>
 
         <div class="form-label-group">
-            <input id="number" type="text" class="form-control" name="number" placeholder="Number" required autofocus>
+            <input id="number" type="text" class="form-control" name="number" placeholder="Number"
+                   value="{{ old('number') }}" required>
             <label for="number">Number</label>
         </div>
 

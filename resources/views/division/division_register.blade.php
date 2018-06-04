@@ -13,22 +13,26 @@
         {{ csrf_field() }}
 
         <div class="form-label-group">
-            <input id="name" type="text" class="form-control" name="name" placeholder="Name" required>
+            <input id="name" type="text" class="form-control" name="name" placeholder="Name"
+                   value="{{ old('name') }}" required>
             <label for="name"> Name </label>
         </div>
 
         <div class="form-label-group">
-            <input id="email" type="email" class="form-control" name="email" placeholder="Email address" required>
+            <input id="email" type="email" class="form-control" name="email" placeholder="Email address"
+                   value="{{ old('email') }}" required>
             <label for="email"> Email address </label>
         </div>
 
         <div class="form-label-group">
-            <input id="prefix" type="text" class="form-control" name="prefix" placeholder="Prefix" required>
+            <input id="prefix" type="text" class="form-control" name="prefix" placeholder="Prefix"
+                   value="{{ old('prefix') }}" required>
             <label for="prefix"> Prefix </label>
         </div>
 
         <div class="form-label-group">
-            <input id="division_name" type="text" class="form-control" name="division_name" placeholder="Division Name" required>
+            <input id="division_name" type="text" class="form-control" name="division_name" placeholder="Division Name"
+                   value="{{ old('division_name') }}" required>
             <label for="division_name"> Division Name</label>
         </div>
 

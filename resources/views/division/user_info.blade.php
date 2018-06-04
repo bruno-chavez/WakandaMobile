@@ -93,7 +93,8 @@
             {{ method_field('PATCH') }}
 
             <div class="form-label-group">
-                <input id="name" type="text" class="form-control" name="name" placeholder="Name" required>
+                <input id="name" type="text" class="form-control" name="name" placeholder="Name"
+                       value="{{ old('name') }}" required>
                 <label for="name"> Name </label>
             </div>
 
@@ -107,7 +108,8 @@
 
 
             <div class="form-label-group">
-                <input id="email" type="email" class="form-control" name="email" placeholder="Email address" required>
+                <input id="email" type="email" class="form-control" name="email" placeholder="Email address"
+                       value="{{ old('email') }}" required>
                 <label for="email"> Email address </label>
             </div>
 
@@ -121,7 +123,8 @@
 
 
             <div class="form-label-group">
-                <input id="rut" type="text" class="form-control" name="rut" placeholder="RUT" required>
+                <input id="rut" type="text" class="form-control" name="rut" placeholder="RUT"
+                       value="{{ old('rut') }}" required>
                 <label for="rut"> RUT </label>
             </div>
 

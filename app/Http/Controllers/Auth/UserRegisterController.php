@@ -9,45 +9,24 @@ use App\Http\Controllers\Controller;
 
 class UserRegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation.
-    |
-    */
 
-    /**
-     * Where to redirect after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = 'division';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth:division');
     }
 
-    // Muestra la view de registro si esta correctamente autentificado.
+
+    // Muestra la view de registro.
     public function showRegistrationForm()
     {
 
         return view('auth.user_register');
     }
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+
+
     public function create()
     {
         $this->validate(request(), [

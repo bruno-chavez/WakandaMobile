@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-
     @if (Auth::guard('web')->check())
 
         <a class="navbar-brand" href="{{route('user.dashboard')}}"> Wakanda Mobile </a>
@@ -15,11 +14,11 @@
         </button>
 
     @else
+
         <a class="navbar-brand" href="{{url('/')}}"> Wakanda Mobile </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
     @endif
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -73,15 +72,6 @@
                     <a class="nav-link" href="{{route('division.register')}}"> Division Register <span class="sr-only">(current)</span></a>
                 </li>
             @endif
-            {{--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-
-                </div>
-            </li>--}}
         </ul>
     </div>
 </nav>

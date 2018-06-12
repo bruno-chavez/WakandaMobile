@@ -1,18 +1,14 @@
 @extends('layouts.app')
 
-@section('navbar.content')
-    <li class="nav-item"> <a class="nav-link active" href="#home">Inicio <span class="sr-only">(current)</span></a> </li>
-@endsection
-
 @section('content')
 
-    <header class="bg-gradient" id="home">
+    <header class="bg-gradient">
         <div class="container mt-5">
             <h1> Portate de division! </h1>
         </div>
     </header>
 
-    <div class="section light-bg" id="details">
+    <div class="section light-bg">
         <div class="container">
             <p> Te estas portando de: {{ Auth::user()->division->division_name }}</p>
             <p> Si la portabilidad se realiza todos tus numeros cambiaran de prefijo </p>

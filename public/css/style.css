@@ -610,3 +610,7 @@ header {
         margin-top: 2rem;
     }
 }
+
+.col-12 {
+    margin-top: 15px;
+}

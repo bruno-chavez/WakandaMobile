@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('navbar.content')
-    <li class="nav-item"> <a class="nav-link active" href="#home">Inicio <span class="sr-only">(current)</span></a> </li>
     <li class="nav-item"> <a class="nav-link" href="#platform">Entra a la plataforma </a> </li>
     <li class="nav-item"> <a class="nav-link" href="#features">Caracteristicas Principales</a> </li>
     <li class="nav-item"> <a class="nav-link" href="#pricing">Precios</a> </li>

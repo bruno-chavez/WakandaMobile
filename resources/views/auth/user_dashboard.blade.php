@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('navbar.content')
-    <li class="nav-item"> <a class="nav-link active" href="#home">Inicio <span class="sr-only">(current)</span></a> </li>
     <li class="nav-item"> <a class="nav-link" href="#details"> Detalles </a> </li>
     <li class="nav-item"> <a class="nav-link" href="#numbers"> Numeros</a> </li>
     <li class="nav-item"> <a class="nav-link" href="#portability"> Portabilidad </a> </li>
@@ -28,7 +27,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title">Tu Email</h4>
+                                    <h4 class="card-title">Tu Email:</h4>
                                     <p class="card-text"> {{ Auth::user()->email }} </p>
                                 </div>
                             </div>
@@ -40,7 +39,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title">Tu RUT</h4>
+                                    <h4 class="card-title">Tu RUT:</h4>
                                     <p class="card-text"> {{ Auth::user()->rut }} </p>
                                 </div>
                             </div>
@@ -52,7 +51,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title"> Tu division </h4>
+                                    <h4 class="card-title"> Tu division: </h4>
                                     <p class="card-text"> {{ Auth::user()->division->division_name }} </p>
                                 </div>
                             </div>
@@ -60,7 +59,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -71,12 +69,9 @@
             <div class="section-title">
                 <h3> Tus Numeros</h3>
             </div>
+
             @if(count(Auth::user()->number))
                 <div style="overflow-x:auto;">
-
-                    <blockquote class="blockquote text-left">
-                        <h4> Numbers: </h4>
-                    </blockquote>
 
                     <table class="table table-hover table-bordered">
                         <thead>
@@ -93,12 +88,12 @@
                         @foreach( Auth::user()->number as $number)
                             <tr>
                                 <th scope="row">{{$count}} </th>
-                                <td> {{ Auth::user()->division->prefix . $number->number }} </td>
+                                <td> {{ Auth::user()->division->prefix . '-' . $number->number }} </td>
                                 <td>
                                     @if ($number->deactivated)
-                                        Deactivated
+                                        Desactivado
                                     @else
-                                        Activated
+                                        Activado
                                     @endif
                                 </td>
                                 <td>
@@ -115,7 +110,7 @@
                     </table>
                 </div>
             @else
-                <h3> This user does not have any numbers. </h3>
+                <h3> Todavia no tienes numeros </h3>
             @endif
         </div>
     </div>

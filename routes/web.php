@@ -13,7 +13,7 @@
 
 // Ruta de Landing Page.
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // Rutas de Login de usuario.

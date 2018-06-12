@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+{{--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     @if (Auth::guard('web')->check())
 
         <a class="navbar-brand" href="{{route('user.dashboard')}}"> Wakanda Mobile </a>
@@ -74,4 +74,21 @@
             @endif
         </ul>
     </div>
-</nav>
+</nav>--}}
+
+<div class="nav-menu fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-dark navbar-expand-lg">
+                    <a class="navbar-brand" href="#"><img src="error" onerror="arguments[0].currentTarget.style.display='none'" class="img-fluid" alt="Wakanda Mobile"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            @yield('navbar.content')
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

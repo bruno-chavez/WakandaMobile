@@ -1,57 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <title>Wakanda Mobile</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Mobland - Mobile App Landing Page Template">
+    <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
 
-        <!-- Title -->
-        <title> Wakanda Mobile </title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <link href="/css/navbar.css" rel="stylesheet">
-        <link href="/css/body.css" rel="stylesheet">
-        @yield('styles')
-    </head>
 
-    <body>
+    <!-- Font -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
 
-        <div class="container">
-            @include('layouts.navbar')
-        </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-        <div class="container">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>@foreach ($errors->all() as $error)
-                            <li> {{ $error  }} </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Main css -->
+    <link href="css/style.css" rel="stylesheet">
 
-            @if(session('message'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('message') }}
-                    </div>
-            @endif
+    <link href="/css/form.css" rel="stylesheet">
+</head>
 
-            @if(session('wrong'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('wrong') }}
-                    </div>
-            @endif
+<body data-spy="scroll" data-target="#navbar" data-offset="30">
 
-            @yield('content')
-        </div>
+@include('layouts.navbar')
 
-        <!-- Scripts -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    </body>
+@yield('content')
+
+<footer class="my-5 text-center">
+    <p class="mb-2"><small>COPYRIGHT © 2017. ALL RIGHTS RESERVED. MOBAPP TEMPLATE BY COLORLIB</small></p>
+    <p class="mb-2"><small>Modificado por Bruno Chavez</small></p>
+</footer>
+
+<!-- jQuery and Bootstrap -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- Plugins JS -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+
+</body>
 </html>

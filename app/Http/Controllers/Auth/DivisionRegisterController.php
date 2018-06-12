@@ -61,6 +61,6 @@ class DivisionRegisterController extends Controller
 
         session()->flash('message', 'Division successfully created.');
 
-        return redirect(route('division.login'));
+        return redirect()->back();
     }
 }

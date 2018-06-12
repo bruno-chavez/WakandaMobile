@@ -85,6 +85,13 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="navbar-nav ml-auto">
                             @yield('navbar.content')
+                            @if(Auth::guest() == false)
+                                <li class="nav-item"><form id="logout-form" action="{{ route('user.logout') }}" method="POST">
+                                        <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </nav>

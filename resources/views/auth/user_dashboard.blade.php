@@ -1,80 +1,155 @@
 @extends('layouts.app')
 
+@section('navbar.content')
+    <li class="nav-item"> <a class="nav-link active" href="#home">Inicio <span class="sr-only">(current)</span></a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#details"> Detalles </a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#numbers"> Numeros</a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#portability"> Portabilidad </a> </li>
+
+@endsection
+
+
 @section('content')
-    <h3> Welcome back {{ Auth::user()->name }}! </h3>
-    <h3> Statistics: </h3>
-    <ul>
-        <li> User email: {{ Auth::user()->email }} </li>
-        <li> User rut: {{ Auth::user()->rut }} </li>
-        <li> User of division: {{ Auth::user()->division->division_name }} </li>
-    </ul>
 
-    @if(count(Auth::user()->number))
-        <div style="overflow-x:auto;">
-            <blockquote class="blockquote text-left">
-                <h4> Numbers: </h4>
-            </blockquote>
-
-            <table class="table table-hover table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col"> # </th>
-                    <th scope="col"> Number </th>
-                    <th scope="col"> Status</th>
-                    <th scope="col"> Reason of deactivation </th>
-                </tr>
-                </thead>
-
-                <tbody>
-                @php($count = 1)
-                @foreach( Auth::user()->number as $number)
-                    <tr>
-                        <th scope="row">{{$count}} </th>
-                        <td> {{ Auth::user()->division->prefix . $number->number }} </td>
-                        <td>
-                            @if ($number->deactivated)
-                                Deactivated
-                            @else
-                                Activated
-                            @endif
-                        </td>
-                        <td>
-                            @if ($number->deactivated)
-                                {{$number->note}}
-                            @else
-                                -
-                            @endif
-                        </td>
-                    </tr>
-                    @php($count++)
-                @endforeach
-                </tbody>
-            </table>
+    <header class="bg-gradient" id="home">
+        <div class="container mt-5">
+            <h1>Hola {{ Auth::user()->name }}!</h1>
         </div>
-    @else
-        <h3> This user does not have any numbers. </h3>
-    @endif
+    </header>
 
-    @if(\App\Portability::where('user_id', Auth::id())->first() != null)
-        <h3> Details of current request:</h3>
-        Remember that you can only request one change of company at a time.
-        @php($port = \App\Portability::where('user_id', Auth::id())->first())
-        <ul>
-            @if ($port->old_division_approval)
-                <li> {{ $port->old_division->division_name }} has accepted the change of division </li>
+    <div class="section light-bg" id="details">
+        <div class="container">
+            <div class="section-title">
+                <h3> Tus Detalles</h3>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="card-title">Tu Email</h4>
+                                    <p class="card-text"> {{ Auth::user()->email }} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="card-title">Tu RUT</h4>
+                                    <p class="card-text"> {{ Auth::user()->rut }} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="card-title"> Tu division </h4>
+                                    <p class="card-text"> {{ Auth::user()->division->division_name }} </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="section" id="numbers">
+        <div class="container">
+
+            <div class="section-title">
+                <h3> Tus Numeros</h3>
+            </div>
+            @if(count(Auth::user()->number))
+                <div style="overflow-x:auto;">
+
+                    <blockquote class="blockquote text-left">
+                        <h4> Numbers: </h4>
+                    </blockquote>
+
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col"> # </th>
+                            <th scope="col"> Numero </th>
+                            <th scope="col"> Estado </th>
+                            <th scope="col"> Motivo de Desactivacion </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @php($count = 1)
+                        @foreach( Auth::user()->number as $number)
+                            <tr>
+                                <th scope="row">{{$count}} </th>
+                                <td> {{ Auth::user()->division->prefix . $number->number }} </td>
+                                <td>
+                                    @if ($number->deactivated)
+                                        Deactivated
+                                    @else
+                                        Activated
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($number->deactivated)
+                                        {{$number->note}}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            </tr>
+                            @php($count++)
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @else
-                <li> {{ $port->old_division->division_name }} has yet to accept or decline the change of division </li>
+                <h3> This user does not have any numbers. </h3>
             @endif
+        </div>
+    </div>
 
-            @if ($port->new_division_approval)
-                <li> {{ $port->new_division->division_name }} has accepted the change of division </li>
+    <div class="section light-bg" id="portability">
+        <div class="container">
+
+            <div class="section-title">
+                <h3> Tu Portabilidad</h3>
+            </div>
+
+            @if(\App\Portability::where('user_id', Auth::id())->first() != null)
+                @php($port = \App\Portability::where('user_id', Auth::id())->first())
+                <ul>
+                    @if ($port->old_division_approval)
+                        <li> {{ $port->old_division->division_name }} acepto tu cambio de division. </li>
+                    @else
+                        <li> {{ $port->old_division->division_name }} todavia no acepta tu cambio de division. </li>
+                    @endif
+
+                    @if ($port->new_division_approval)
+                        <li> {{ $port->new_division->division_name }} acepto tu cambio de division. </li>
+                    @else
+                        <li> {{ $port->new_division->division_name }} todavia no acepta tu cambio de division. </li>
+                    @endif
+                </ul>
+
             @else
-                <li> {{ $port->new_division->division_name }} has yet to accept or decline the change of division </li>
+                <p> Te estas portando de: {{ Auth::user()->division->division_name }}</p>
+                <p> Si la portabilidad se realiza todos tus numeros cambiaran de prefijo </p>
+                <p> Recuerda que solo puedes tener una solicitud de portabilidad activa a la vez </p>
+                <a href="{{ route('user.portability') }}"> <button class="btn btn-primary"> Portate </button> </a>
             @endif
-        </ul>
-    @else
+        </div>
+    </div>
 
-        <h3> Request a change of division: </h3>
-        <a href="{{ route('user.portability') }}"> <button class="btn"> Port</button> </a>
-    @endif
 @endsection

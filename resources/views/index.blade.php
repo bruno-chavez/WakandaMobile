@@ -10,8 +10,6 @@
 
 @section('content')
 
-
-
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
             <h1>Wakanda Mobile</h1>
@@ -87,17 +85,17 @@
                     </div>
                     <div class="tab-pane fade" id="division_register">
                         <div class="d-flex flex-column flex-lg-row">
-                            <div>
-                                @include('layouts.division_register')
-                                @include('layouts.error')
-                            </div>
-
+                           <div>
+                               @include('layouts.division_register')
+                               @include('layouts.error')
+                           </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="section" id="features">
         <div class="container">
@@ -112,7 +110,8 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="card-title">Simple</h4>
-                                    <p class="card-text"> Manejo de usuarios y sus numeros de manera simple y directa, con una interfaz facil de usar y entender. </p>
+                                    <p class="card-text"> Manejo de usuarios y sus numeros de manera simple y directa,
+                                        con una interfaz facil de usar y entender. </p>
                                 </div>
                             </div>
                         </div>
@@ -124,26 +123,28 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="card-title">Detallado</h4>
-                                    <p class="card-text"> La plataforma te muestra toda la informacion de tus usuarios y sus numeros de manera limpia y concisa. </p>
+                                    <p class="card-text"> La plataforma te muestra toda la informacion de
+                                        tus usuarios y sus numeros de manera limpia y concisa. </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="card-title">Portable</h4>
-                                    <p class="card-text"> Al usar Wakanda Mobile tienes la posibilidad de aumentar tus usuarios, ya que estos son portables entre divisiones. </p>
+                                    <p class="card-text"> Al usar Wakanda Mobile tienes la posibilidad de aumentar
+                                        tus usuarios, ya que estos son portables entre divisiones. </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -246,6 +247,6 @@
                 </div>
             </div>
         </div>
-
     </div>
+
 @endsection

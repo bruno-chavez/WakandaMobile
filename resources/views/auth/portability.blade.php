@@ -1,29 +1,40 @@
 @extends('layouts.app')
 
-@section('styles')
-    <link href="/css/login.css" rel="stylesheet">
+@section('navbar.content')
+    <li class="nav-item"> <a class="nav-link active" href="#home">Inicio <span class="sr-only">(current)</span></a> </li>
 @endsection
+
 @section('content')
-    <blockquote class="blockquote text-left">
-        <h3> Portability Form </h3>
-    </blockquote>
 
-    <p> You are porting from: {{ Auth::user()->division->division_name }} </p>
-    <p> All of your numbers will change of prefix once the portability is approved by both divisions</p>
+    <header class="bg-gradient" id="home">
+        <div class="container mt-5">
+            <h1> Portate de division! </h1>
+        </div>
+    </header>
 
-    <form name="division" class="form-horizontal" method="POST" action="{{ route('user.portability.submit') }}">
-        {{ csrf_field() }}
+    <div class="section light-bg" id="details">
+        <div class="container">
+            <p> Te estas portando de: {{ Auth::user()->division->division_name }}</p>
+            <p> Si la portabilidad se realiza todos tus numeros cambiaran de prefijo </p>
+            <p> Recuerda que solo puedes tener una solicitud de portabilidad activa a la vez </p>
 
-        <select name="division">
-            <label for="name"></label>
-            @foreach (\App\Division::all() as $division)
-                @if(Auth::user()->division->division_name === $division->division_name)
-                    @continue
-                @endif
-                    <option value="{{ $division->division_name }}"> {{ $division->division_name }} </option>
-            @endforeach
-        </select>
+            <div>
+                <form name="division" class="form-horizontal" method="POST" action="{{ route('user.portability.submit') }}">
+                    {{ csrf_field() }}
 
-        <button type="submit" class="btn"> Port </button>
-    </form>
+                    <label for="division"></label>
+                    <select name="division">
+                        @foreach (\App\Division::all() as $division)
+                            @if(Auth::user()->division->division_name === $division->division_name)
+                                @continue
+                            @endif
+                            <option value="{{ $division->division_name }}"> {{ $division->division_name }} </option>
+                        @endforeach
+                    </select>
+
+                    <button type="submit" class="btn btn-primary"> Portate </button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -7,14 +7,12 @@
     <li class="nav-item"> <a class="nav-link" href="#fqa">Preguntas Frecuentes</a> </li>
 @endsection
 
-@section('content')
+@section('header.name')
+    <h1>Wakanda Mobile</h1>
+    <h1>La manera mas facil de organizar usuarios y numeros para tu division</h1>
+@endsection
 
-    <header class="bg-gradient" id="home">
-        <div class="container mt-5">
-            <h1>Wakanda Mobile</h1>
-            <h1>La manera mas facil de organizar usuarios y numeros para tu division</h1>
-        </div>
-    </header>
+@section('content')
 
     <div class="section light-bg" id="platform">
         <div class="section light-bg">

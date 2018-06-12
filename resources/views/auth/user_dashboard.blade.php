@@ -10,11 +10,9 @@
 
 @section('content')
 
-    <header class="bg-gradient" id="home">
-        <div class="container mt-5">
-            <h1>Hola {{ Auth::user()->name }}!</h1>
-        </div>
-    </header>
+    @section('header.name')
+        <h1>Hola {{ Auth::user()->name }}!</h1>
+    @endsection
 
     <div class="section light-bg" id="details">
         <div class="container">

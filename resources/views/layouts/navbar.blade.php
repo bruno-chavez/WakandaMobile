@@ -13,25 +13,34 @@
                             @yield('navbar.content')
 
                             @if(Auth::guard('web')->check())
-                                <li class="nav-item"> <a class="nav-link active" href="{{route('user.dashboard')}}"> Inicio Usuario
-                                        <span class="sr-only">(current)</span></a>
-                                </li>
 
-                                <li class="nav-item"><form id="logout-form" action="{{ route('user.logout') }}" method="POST">
-                                        <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
-                                        {{ csrf_field() }}
-                                    </form>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" > Usuario </a>
+                                    <div class="dropdown-menu" style="background: #D33591">
+                                        <a class="nav-link" href="{{route('user.dashboard')}}"> Inicio Usuario
+                                            <span class="sr-only">(current)</span></a>
+
+                                        <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
+                                            <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
                                 </li>
 
                             @elseif(Auth::guard('division')->check())
-                                <li class="nav-item"> <a class="nav-link active" href="{{route('division.dashboard')}}"> Inicio Division
-                                        <span class="sr-only">(current)</span></a>
-                                </li>
 
-                                <li class="nav-item"><form id="logout-form" action="{{ route('user.logout') }}" method="POST">
-                                        <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
-                                        {{ csrf_field() }}
-                                    </form>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" > Division </a>
+                                    <div class="dropdown-menu" style="background: #D33591">
+                                        <a class="nav-link active" href="{{route('division.dashboard')}}"> Inicio Division
+                                            <span class="sr-only">(current)</span></a>
+
+
+                                        <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
+                                            <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
                                 </li>
 
                             @endif

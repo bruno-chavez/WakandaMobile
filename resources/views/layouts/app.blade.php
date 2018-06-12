@@ -29,7 +29,7 @@
 <body data-spy="scroll" data-target="#navbar" data-offset="30">
 
 @include('layouts.navbar')
-
+@include('layouts.header')
 @yield('content')
 
 <footer class="my-5 text-center">

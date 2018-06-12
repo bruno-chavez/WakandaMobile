@@ -8,13 +8,11 @@
 
 @endsection
 
-@section('content')
+@section('header.name')
+    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la division {{ Auth::user()->division_name }} </h1>
+@endsection
 
-    <header class="bg-gradient" id="home">
-        <div class="container mt-5">
-            <h1> Hola {{ Auth::user()->name }} recuerda que manejas la division {{ Auth::user()->division_name }} </h1>
-        </div>
-    </header>
+@section('content')
 
     <div class="section light-bg" id="statistics">
         <div class="container">
@@ -240,10 +238,10 @@
                 </tbody>
             </table>
         </div>
-        </div>
-    </div>
+
     @else
         <h4> Actualmente no hay usuarios que quieran pertencer a {{Auth::user()->division_name}} </h4>
     @endif
-
+        </div>
+    </div>
 @endsection

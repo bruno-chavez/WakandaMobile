@@ -59,7 +59,7 @@ class DivisionRegisterController extends Controller
 
         Division::create($queryFields);
 
-        session()->flash('message', 'Division successfully created.');
+        session()->flash('message', 'Division creada exitosamente');
 
         return redirect()->back();
     }

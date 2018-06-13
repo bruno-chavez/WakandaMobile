@@ -42,7 +42,7 @@ class UserRegisterController extends Controller
         $queryFields = array_add($queryFields,'division_id', Auth::id());
         User::create($queryFields);
 
-        session()->flash('message', 'User successfully created.');
+        session()->flash('message', 'Usuario creado exitosamente');
 
         return redirect()->route('division.dashboard');
     }

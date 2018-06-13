@@ -14,6 +14,10 @@
         <h1>Hola {{ Auth::user()->name }}!</h1>
     @endsection
 
+    <div class="container">
+        @include('layouts.error')
+    </div>
+
     <div class="section light-bg" id="details">
         <div class="container">
             <div class="section-title">

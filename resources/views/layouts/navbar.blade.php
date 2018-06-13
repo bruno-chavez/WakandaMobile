@@ -35,7 +35,6 @@
                                         <a class="nav-link active" href="{{route('division.dashboard')}}"> Inicio Division
                                             <span class="sr-only">(current)</span></a>
 
-
                                         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
                                             <button class="btn btn-outline-light my-3 my-sm-0 ml-lg-3"> Salir</button>
                                             {{ csrf_field() }}

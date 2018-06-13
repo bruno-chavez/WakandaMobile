@@ -17,7 +17,7 @@ class CreatePortabilityController extends Controller
 
         foreach(Portability::all() as $port) {
             if($port->user_id == Auth::id()) {
-                session()->flash('wrong', 'Pending portability for this user.');
+                session()->flash('wrong', 'Tienes una portabilidad pendiente.');
                 return redirect(route('user.dashboard'));
             }
         }
@@ -36,7 +36,7 @@ class CreatePortabilityController extends Controller
         $queryFields = array_add($queryFields, 'new_division_id', $new_division->id);
         Portability::create($queryFields);
 
-        session()->flash('message', 'Portability form successfully created .');
+        session()->flash('message', 'Peticion de portabilidad creada exitosamente.');
 
         return redirect(route('user.dashboard'));
     }

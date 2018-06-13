@@ -19,7 +19,7 @@ class PortabilityController extends Controller
             $port->user->save();
 
             $port->delete();
-            session()->flash('message', 'Portability successfully approved by both divisions.');
+            session()->flash('message', 'Portabilidad aceptada por ambas diviciones exitosamente.');
             return true;
         }
         else {
@@ -43,14 +43,14 @@ class PortabilityController extends Controller
         }
         else {
             $port->save();
-            session()->flash('message', 'Portability successfully approved.');
+            session()->flash('message', 'Portabilidad aprovada por esta division.');
             return redirect()->route('division.dashboard');
         }
     }
 
     public function decline(Portability $port) {
         $port->delete();
-        session()->flash('message', 'Portability successfully declined.');
+        session()->flash('message', 'Portabilidad declinada por esta division.');
         return redirect()->route('division.dashboard');
     }
 }

@@ -39,7 +39,7 @@ class DivisionLoginController extends Controller
             return redirect()->intended(route('division.dashboard'));
         }
 
-        session()->flash('wrong', 'These credentials do not match our records.');
+        session()->flash('wrong', 'Correo o contraseña equivocada, intente de nuevo porfavor.');
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 }

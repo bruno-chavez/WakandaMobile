@@ -172,7 +172,7 @@
     </div>
     </div>
 
-<div class="section light-bg" id="portabilities">
+    <div class="section light-bg" id="portabilities">
 <div class="container">
     <div class="section-title">
         <h3> Portabilidades </h3>
@@ -301,4 +301,5 @@
 @endif
 </div>
 </div>
+
 @endsection

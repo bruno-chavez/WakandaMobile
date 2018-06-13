@@ -41,7 +41,6 @@
                                         </form>
                                     </div>
                                 </li>
-
                             @endif
                         </ul>
                     </div>

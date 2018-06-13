@@ -17,13 +17,12 @@
                 <form name="division" class="form-horizontal" method="POST" action="{{ route('user.portability.submit') }}">
                     {{ csrf_field() }}
 
-                    <label for="division"></label>
                     <select name="division">
                         @foreach (\App\Division::all() as $division)
                             @if(Auth::user()->division->division_name === $division->division_name)
                                 @continue
                             @endif
-                            <option value="{{ $division->division_name }}"> {{ $division->division_name }} </option>
+                            <option label="division" value="{{ $division->division_name }}"> {{ $division->division_name }} </option>
                         @endforeach
                     </select>
 

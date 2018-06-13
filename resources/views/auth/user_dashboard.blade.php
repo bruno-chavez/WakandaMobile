@@ -7,12 +7,11 @@
 
 @endsection
 
+@section('header.name')
+    <h1>Hola {{ Auth::user()->name }}!</h1>
+@endsection
 
 @section('content')
-
-    @section('header.name')
-        <h1>Hola {{ Auth::user()->name }}!</h1>
-    @endsection
 
     <div class="container">
         @include('layouts.error')
@@ -23,6 +22,7 @@
             <div class="section-title">
                 <h3> Tus Detalles</h3>
             </div>
+
             <div class="row">
                 <div class="col-12 col-lg-4">
                     <div class="card features">
@@ -36,6 +36,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">
@@ -48,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">

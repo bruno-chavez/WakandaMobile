@@ -173,133 +173,140 @@
     </div>
 
     <div class="section light-bg" id="portabilities">
-<div class="container">
-    <div class="section-title">
-        <h3> Portabilidades </h3>
+
+        <div class="container">
+            <div class="section-title">
+                <h3> Portabilidades </h3>
+            </div>
+
+        @if(count(Auth::user()->from_portabilities))
+            <div style="overflow-x:auto;">
+
+                <blockquote class="blockquote text-left">
+                    <h3> Ususarios que quieren salir de {{Auth::user()->division_name }}: </h3>
+                </blockquote>
+
+                <table class="table table-hover table-bordered">
+
+                    <thead>
+                    <tr>
+                        <th scope="col"> # </th>
+                        <th scope="col"> Usuario </th>
+                        <th scope="col">Actual Division</th>
+                        <th scope="col">Nueva Division</th>
+                        <th scope="col">Approvar</th>
+                        <th scope="col">Declinar</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @php($count = 1)
+                    @foreach( Auth::user()->from_portabilities as $port)
+
+                        <tr>
+                            <th scope="row">{{$count}} </th>
+                            <td> {{ $port->user->name }} </td>
+                            <td> {{ $port->old_division->division_name }} </td>
+                            <td> {{ $port->new_division->division_name }} </td>
+                            <td> <form class="form-horizontal" method="POST"
+                                       action="{{ route('division.portability.approve',
+                                          ['port' => $port->id, 'division' => Auth::id()]) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PATCH') }}
+
+                                    @if($port->old_division_approval)
+                                        <button class="btn btn-primary" type="submit"
+                                                title="Ya has aprovado esta solicitud de portabilidad."
+                                                disabled> Approvar </button>
+                                    @else
+                                        <button class="btn btn-primary" type="submit"> Approvar </button>
+                                    @endif
+                                </form>
+                            </td>
+                            <td>
+                                <form class="form-horizontal" method="POST"
+                                       action="{{ route('division.portability.decline', $port->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button class="btn btn-primary" type="submit"> Declinar </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @php($count++)
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <h3> No hay usuarios que quieran dejar a {{Auth::user()->division_name}} </h3>
+        @endif
+        </div>
     </div>
 
-@if(count(Auth::user()->from_portabilities))
-    <div style="overflow-x:auto;">
-        <blockquote class="blockquote text-left">
-            <h3> Ususarios que quieren salir de {{Auth::user()->division_name }}: </h3>
-        </blockquote>
+    <div class="section light-bg">
+        <div class="container">
+            @if(count(Auth::user()->to_portabilities))
+                <div style="overflow-x:auto;">
+                    <blockquote class="blockquote text-left">
+                        <h3> Ususarios que quieren pertenecer a {{Auth::user()->division_name }}: </h3>
+                    </blockquote>
 
-        <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col"> # </th>
+                            <th scope="col"> Usuario </th>
+                            <th scope="col">Actual Division</th>
+                            <th scope="col">Nueva Division</th>
+                            <th scope="col">Approvar</th>
+                            <th scope="col">Declinar</th>
+                        </tr>
+                        </thead>
 
-            <thead>
-            <tr>
-                <th scope="col"> # </th>
-                <th scope="col"> User </th>
-                <th scope="col">Old Division</th>
-                <th scope="col">New Division</th>
-                <th scope="col">Approve</th>
-                <th scope="col">Decline</th>
-            </tr>
-            </thead>
+                        <tbody>
+                        @php($count = 1)
+                        @foreach( Auth::user()->to_portabilities as $port)
+                            <tr>
+                                <th scope="row">{{$count}} </th>
+                                <td> {{ $port->user->name }} </td>
+                                <td> {{ $port->old_division->division_name }} </td>
+                                <td> {{ $port->new_division->division_name }} </td>
+                                <td>
+                                    <form class="form-horizontal" method="POST"
+                                          action="{{ route('division.portability.approve',
+                                              ['port' => $port->id, 'division' => Auth::id()]) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
 
-            <tbody>
-            @php($count = 1)
-            @foreach( Auth::user()->from_portabilities as $port)
+                                        @if($port->new_division_approval)
+                                            <button class="btn btn-primary" type="submit"
+                                                    title="Ya has aprovado esta solicitud de portabilidad."
+                                                    disabled> Approvar </button>
+                                        @else
+                                            <button class="btn btn-primary" type="submit"> Approvar </button>
+                                        @endif
+                                    </form>
+                                </td>
+                                <td> <form class="form-horizontal" method="POST"
+                                           action="{{ route('division.portability.decline', $port->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
 
-                <tr>
-                    <th scope="row">{{$count}} </th>
-                    <td> {{ $port->user->name }} </td>
-                    <td> {{ $port->old_division->division_name }} </td>
-                    <td> {{ $port->new_division->division_name }} </td>
-                    <td> <form class="form-horizontal" method="POST"
-                               action="{{ route('division.portability.approve',
-                                  ['port' => $port->id, 'division' => Auth::id()]) }}">
-                            {{ csrf_field() }}
-                            {{ method_field('PATCH') }}
+                                        <button class="btn btn-primary" type="submit"> Declinar </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @php($count++)
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
-                            @if($port->old_division_approval)
-                                <button class="btn btn-primary" type="submit" title="You have already approved this request."
-                                        disabled> Approve </button>
-                            @else
-                                <button class="btn btn-primary" type="submit"> Approve </button>
-                            @endif
-                        </form>
-                    </td>
-                    <td>
-                        <form class="form-horizontal" method="POST"
-                               action="{{ route('division.portability.decline', $port->id) }}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-
-                            <button class="btn btn-primary" type="submit"> Decline </button>
-                        </form>
-                    </td>
-                </tr>
-                @php($count++)
-            @endforeach
-            </tbody>
-        </table>
+            @else
+                <h3 > No hay usuarios que quieran pertencer a {{Auth::user()->division_name}} </h3>
+            @endif
+        </div>
     </div>
-@else
-    <h3> No hay usuarios que quieran dejar a {{Auth::user()->division_name}} </h3>
-@endif
-
-@if(count(Auth::user()->to_portabilities))
-<div style="overflow-x:auto;">
-    <blockquote class="blockquote text-left">
-        <h3> Ususarios que quieren pertenecer a {{Auth::user()->division_name }}: </h3>
-    </blockquote>
-
-    <table class="table table-hover table-bordered">
-        <thead>
-        <tr>
-            <th scope="col"> # </th>
-            <th scope="col"> User </th>
-            <th scope="col">Old Division</th>
-            <th scope="col">New Division</th>
-            <th scope="col">Approve</th>
-            <th scope="col">Decline</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        @php($count = 1)
-        @foreach( Auth::user()->to_portabilities as $port)
-            <tr>
-                <th scope="row">{{$count}} </th>
-                <td> {{ $port->user->name }} </td>
-                <td> {{ $port->old_division->division_name }} </td>
-                <td> {{ $port->new_division->division_name }} </td>
-                <td>
-                    <form class="form-horizontal" method="POST"
-                           action="{{ route('division.portability.approve',
-                              ['port' => $port->id, 'division' => Auth::id()]) }}">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-
-                        @if($port->new_division_approval)
-                                <button class="btn" type="submit"
-                                        title="You have already approved this request."
-                                        disabled> Approve </button>
-                        @else
-                            <button class="btn" type="submit"> Approve </button>
-                        @endif
-                    </form>
-                </td>
-                <td> <form class="form-horizontal" method="POST"
-                           action="{{ route('division.portability.decline', $port->id) }}">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-
-                        <button class="btn" type="submit"> Decline </button>
-                    </form>
-                </td>
-            </tr>
-            @php($count++)
-        @endforeach
-        </tbody>
-    </table>
-</div>
-
-@else
-<h3 > No hay usuarios que quieran pertencer a {{Auth::user()->division_name}} </h3>
-@endif
-</div>
-</div>
 
 @endsection

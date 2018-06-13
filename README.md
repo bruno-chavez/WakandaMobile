@@ -65,14 +65,6 @@ si intenta acceder a esta manualmente.
 
 '/'
 
-#### Acceso solo para invitados:
-
-'user/login'
-
-'division/login'
-
-'division/register'
-
 #### Acceso solo para usuarios:
 
 'user'
@@ -87,8 +79,4 @@ si intenta acceder a esta manualmente.
 
 'division/userslist/{user_id}'
 
-'division/userslist/{user_id}/create'
-
 'division/userslist/{user_id}/{number_id}'
-
-'user/register'

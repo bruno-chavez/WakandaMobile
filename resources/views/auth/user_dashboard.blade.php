@@ -130,15 +130,15 @@
                 @php($port = \App\Portability::where('user_id', Auth::id())->first())
                 <ul>
                     @if ($port->old_division_approval)
-                        <li> {{ $port->old_division->division_name }} acepto tu cambio de division. </li>
+                        <h3> {{ $port->old_division->division_name }} acepto tu cambio de division. </h3>
                     @else
-                        <li> {{ $port->old_division->division_name }} todavia no acepta tu cambio de division. </li>
+                        <h3> {{ $port->old_division->division_name }} todavia no acepta tu cambio de division. </h3>
                     @endif
 
                     @if ($port->new_division_approval)
-                        <li> {{ $port->new_division->division_name }} acepto tu cambio de division. </li>
+                        <h3> {{ $port->new_division->division_name }} acepto tu cambio de division. </h3>
                     @else
-                        <li> {{ $port->new_division->division_name }} todavia no acepta tu cambio de division. </li>
+                        <h3> {{ $port->new_division->division_name }} todavia no acepta tu cambio de division. </h3>
                     @endif
                 </ul>
 

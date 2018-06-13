@@ -161,7 +161,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h3> Borra a un usuario</h3>
+                <h3> Borra a este usuario</h3>
             </div>
 
             <form method="POST" action="{{ route('division.userInfo.delete', $user->id ) }}">

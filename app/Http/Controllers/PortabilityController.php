@@ -43,14 +43,14 @@ class PortabilityController extends Controller
         }
         else {
             $port->save();
-            session()->flash('message', 'Portabilidad aprovada por esta division.');
+            session()->flash('message', 'Aceptaste la solicitud de portabilidad de ' . $port->user->name);
             return redirect()->route('division.dashboard');
         }
     }
 
     public function decline(Portability $port) {
         $port->delete();
-        session()->flash('message', 'Portabilidad declinada por esta division.');
+        session()->flash('message', 'Declinaste la solicitud de portabilidad de ' . $port->user->name);
         return redirect()->route('division.dashboard');
     }
 }

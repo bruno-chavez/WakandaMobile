@@ -10,9 +10,13 @@ abra el archivo como tal.
 
 Por comodidad y conveniencia el proyecto esta 
 programado en ingles por preferencia propia y 
-debido a la syntaxis que requiere Laravel,
-ademas para que no parezca spanglish 
-la pagina web tambien estara en ingles en su totalidad.
+debido a la syntaxis que requiere Laravel.
+
+La pagina ha sido probada y funciona correctamente 
+en dispositivos Android y Apple, navegadores Firefox
+
+La pagina ha sido probada y no funciona correctamente 
+en navegadores, Chromium
 
 ## Suposiciones:
 

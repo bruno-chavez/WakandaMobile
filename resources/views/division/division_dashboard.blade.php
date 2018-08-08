@@ -2,14 +2,15 @@
 
 @section('navbar.content')
 
-    <li class="nav-item"> <a class="nav-link" href="#statistics"> Estadisticas </a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#statistics"> Estadísticas </a> </li>
     <li class="nav-item"> <a class="nav-link" href="#users_list"> Usuarios</a> </li>
     <li class="nav-item"> <a class="nav-link" href="#portabilities"> Portabilidades </a> </li>
 
 @endsection
 
 @section('header.name')
-    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la division {{ Auth::user()->division_name }} </h1>
+    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la división {{ Auth::user()->division_name }}
+        y su prefijo es {{Auth::user()->prefix}} </h1>
 @endsection
 
 @section('content')
@@ -21,7 +22,7 @@
     <div class="section" id="statistics">
         <div class="container">
             <div class="section-title">
-                <h3> Estadisticas de tus usuarios </h3>
+                <h3> Estadísticas de tus usuarios </h3>
             </div>
 
             <div class="row">
@@ -43,7 +44,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title">Total de numeros: </h4>
+                                    <h4 class="card-title">Total de números: </h4>
                                     <p class="card-text"> {{ $totalNumbers }} </p>
                                 </div>
                             </div>
@@ -56,7 +57,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title"> Total de numeros activados: </h4>
+                                    <h4 class="card-title"> Total de números activados: </h4>
                                     <p class="card-text"> {{ $activatedNumbers }} </p>
                                 </div>
                             </div>
@@ -69,7 +70,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title"> Total de numeros desactivados: </h4>
+                                    <h4 class="card-title"> Total de números desactivados: </h4>
                                     <p class="card-text"> {{ $totalNumbers - $activatedNumbers }} </p>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@
                             <th scope="col"> Nombre </th>
                             <th scope="col"> RUT </th>
                             <th scope="col"> Email </th>
-                            <th scope="col"> Total de Numeros </th>
+                            <th scope="col"> Total de Números </th>
                             <th scope="col"> Detalles </th>
                         </tr>
                         </thead>
@@ -133,7 +134,7 @@
                 <h3> Crea un nuevo usuario </h3>
             </div>
 
-            <h5> Puedes crear un numero ilimitado de usuarios en Wakanda Mobile, no te preocupes! </h5>
+            <h5> Puedes crear un número ilimitado de usuarios en Wakanda Mobile, no te preocupes! </h5>
 
 
         <form class="form-signin" method="POST" action="{{ route('user.register') }}">

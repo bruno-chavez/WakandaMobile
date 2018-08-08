@@ -2,7 +2,7 @@
 
 @section('navbar.content')
     <li class="nav-item"> <a class="nav-link" href="#details"> Detalles </a> </li>
-    <li class="nav-item"> <a class="nav-link" href="#numbers"> Numeros</a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#numbers"> Números</a> </li>
     <li class="nav-item"> <a class="nav-link" href="#portability"> Portabilidad </a> </li>
 
 @endsection
@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h4 class="card-title"> Tu division: </h4>
+                                    <h4 class="card-title"> Tu División: </h4>
                                     <p class="card-text"> {{ Auth::user()->division->division_name }} </p>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h3> Tus Numeros</h3>
+                <h3> Tus Números</h3>
             </div>
 
             @if(count(Auth::user()->number))
@@ -81,9 +81,9 @@
                         <thead>
                         <tr>
                             <th scope="col"> # </th>
-                            <th scope="col"> Numero </th>
+                            <th scope="col"> Número </th>
                             <th scope="col"> Estado </th>
-                            <th scope="col"> Motivo de Desactivacion </th>
+                            <th scope="col"> Motivo Desactivación </th>
                         </tr>
                         </thead>
 
@@ -114,7 +114,7 @@
                     </table>
                 </div>
             @else
-                <h3> Todavia no tienes numeros </h3>
+                <h3> Todavia no tienes números </h3>
             @endif
         </div>
     </div>
@@ -130,23 +130,23 @@
                 @php($port = \App\Portability::where('user_id', Auth::id())->first())
                 <ul>
                     @if ($port->old_division_approval)
-                        <h3> {{ $port->old_division->division_name }} acepto tu cambio de division. </h3>
+                        <h3> {{ $port->old_division->division_name }} aprobó tu cambio de división </h3>
                     @else
-                        <h3> {{ $port->old_division->division_name }} todavia no acepta tu cambio de division. </h3>
+                        <h3> {{ $port->old_division->division_name }} todavia no aprueba tu cambio de división </h3>
                     @endif
 
                     @if ($port->new_division_approval)
-                        <h3> {{ $port->new_division->division_name }} acepto tu cambio de division. </h3>
+                        <h3> {{ $port->new_division->division_name }} aprobó tu cambio de división </h3>
                     @else
-                        <h3> {{ $port->new_division->division_name }} todavia no acepta tu cambio de division. </h3>
+                        <h3> {{ $port->new_division->division_name }} todavia no aprueba tu cambio de división </h3>
                     @endif
                 </ul>
 
             @else
-                <p> Te estas portando de: {{ Auth::user()->division->division_name }}</p>
-                <p> Si la portabilidad se realiza todos tus numeros cambiaran de prefijo </p>
-                <p> Recuerda que solo puedes tener una solicitud de portabilidad activa a la vez </p>
-                <a href="{{ route('user.portability') }}"> <button class="btn btn-primary"> Portate </button> </a>
+                <p> Te estas portando de: {{ Auth::user()->division->division_name }}.</p>
+                <p> Si la portabilidad se realiza todos tus números cambiaran de prefijo. </p>
+                <p> Recuerda que solo puedes tener una solicitud de portabilidad activa a la vez. </p>
+                <a href="{{ route('user.portability') }}"> <button class="btn btn-primary"> Pórtate </button> </a>
             @endif
         </div>
     </div>

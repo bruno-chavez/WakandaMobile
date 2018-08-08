@@ -30,9 +30,9 @@
                             @elseif(Auth::guard('division')->check())
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" > Division </a>
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" > División </a>
                                     <div class="dropdown-menu" style="background: #D33591">
-                                        <a class="nav-link active" href="{{route('division.dashboard')}}"> Inicio Division
+                                        <a class="nav-link active" href="{{route('division.dashboard')}}"> Inicio División
                                             <span class="sr-only">(current)</span></a>
 
                                         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">

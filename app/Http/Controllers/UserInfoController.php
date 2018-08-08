@@ -19,7 +19,6 @@ class UserInfoController extends Controller
     }
 
     public function delete(User $user) {
-
         //Elimina los numeros y a portabilidad, asociados al usuario antes de eliminar al usuario.
         foreach ($user->number as $number) {
             $number->delete();
@@ -31,16 +30,15 @@ class UserInfoController extends Controller
         }
         $user->delete();
 
-        session()->flash('message', 'User deleted succesfuly');
+        session()->flash('message', 'Usuario borrado exitosamente');
 
-        return redirect()->route('division.usersList');
+        return redirect()->route('division.dashboard');
     }
     public function update(User $user){
-
         $this->validate(request(), [
             'name' => 'string|max:255',
             'email' => 'string|email|max:255|unique:divisions|unique:users',
-            'rut' => 'integer|unique:users'
+            'rut' => 'integer|digits_between:8,9|unique:users'
         ]);
 
         // column es el dato que se quiere cambiar del usuario
@@ -51,9 +49,9 @@ class UserInfoController extends Controller
         $user->$column = $input;
         $user->save();
 
-        // Envia una laerta si se actualiza un dato correctamente.
-        // Formatea el mensaje para que empieze con mauyscula.
-        $message = $column . ' successfully updated.';
+        // Envia una alerta si se actualiza un dato correctamente.
+        // Formatea el mensaje para que empieze con mayuscula.
+        $message = $column . ' actualizado exitosamente.';
         $message = ucfirst($message);
         session()->flash('message', $message);
 

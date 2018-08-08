@@ -78,6 +78,7 @@ p.lead {
 }
 
 .btn-primary {
+    cursor: pointer;
     border-radius: 3px;
     background-image: -moz-linear-gradient( 122deg, #e54595 0%, #fd378e 100%);
     background-image: -webkit-linear-gradient( 122deg, #e54595 0%, #fd378e 100%);

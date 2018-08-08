@@ -44,7 +44,7 @@ class NumberController extends Controller
             $number->note = '';
             $number->deactivated = 0;
             $number->save();
-            session()->flash('message', 'Numero activado exitosamente.');
+            session()->flash('message', 'Número activado exitosamente.');
 
         }
         else {
@@ -55,7 +55,7 @@ class NumberController extends Controller
             $number->note = request('note');
             $number->deactivated = 1;
             $number->save();
-            session()->flash('message', 'Numero desactivado exitosamente.');
+            session()->flash('message', 'Número desactivado exitosamente.');
         }
 
         return redirect()->route('division.userInfo', $user->id);

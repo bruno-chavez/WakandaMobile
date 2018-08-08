@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('header.name')
-    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la division {{ Auth::user()->division_name }} </h1>
+    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la división {{ Auth::user()->division_name }}
+        y su prefijo es {{Auth::user()->prefix}} </h1>
 @endsection
 
 @section('content')
@@ -14,7 +15,7 @@
 
             @if($number->deactivated)
                 <blockquote class="blockquote text-left">
-                    <h4> Para activar este numero presiona el siguiente boton </h4>
+                    <h4> Para activar este número presiona el siguiente botón </h4>
                 </blockquote>
 
                 <form class="form-horizontal" method="POST"
@@ -32,7 +33,7 @@
                     {{ method_field('PATCH') }}
 
                     <blockquote class="blockquote text-left">
-                        <h4> Escribe la razon por la cual se desactiva este numero </h4>
+                        <h4> Escribe la razón por la cual se desactiva este número </h4>
                     </blockquote>
 
                     <div class="form-label-group">

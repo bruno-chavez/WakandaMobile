@@ -2,14 +2,15 @@
 
 @section('navbar.content')
     <li class="nav-item"> <a class="nav-link" href="#details"> Detalles </a> </li>
-    <li class="nav-item"> <a class="nav-link" href="#numbers"> Numeros</a> </li>
+    <li class="nav-item"> <a class="nav-link" href="#numbers"> Números</a> </li>
     <li class="nav-item"> <a class="nav-link" href="#create_number"> Crear </a> </li>
     <li class="nav-item"> <a class="nav-link" href="#delete"> Borrar </a> </li>
     <li class="nav-item"> <a class="nav-link" href="#delete"> Actualizar </a> </li>
 @endsection
 
 @section('header.name')
-    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la division {{ Auth::user()->division_name }} </h1>
+    <h1> Hola {{ Auth::user()->name }} recuerda que manejas la división {{ Auth::user()->division_name }}
+        y su prefijo es {{Auth::user()->prefix}} </h1>
 @endsection
 
 @section('content')
@@ -71,7 +72,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h3> Numeros</h3>
+                <h3> Números</h3>
             </div>
 
             @if(count($user->number))
@@ -81,9 +82,9 @@
                         <thead>
                         <tr>
                             <th scope="col"> # </th>
-                            <th scope="col"> Numero </th>
+                            <th scope="col"> Número </th>
                             <th scope="col"> Estado </th>
-                            <th scope="col"> Motivo de Desactivacion </th>
+                            <th scope="col"> Motivo Desactivación </th>
                             <th scope="col"> Cambiar Estado </th>
 
                         </tr>
@@ -126,7 +127,7 @@
                     </table>
                 </div>
             @else
-                <h5> Este usuario todavia no tiene numeros </h5>
+                <h5> Este usuario todavia no tiene números </h5>
             @endif
         </div>
     </div>
@@ -135,20 +136,20 @@
         <div class="container">
 
             <div class="section-title">
-                <h3> Crea un numero</h3>
+                <h3> Crea un número</h3>
             </div>
 
             <form class="form-signin" method="POST" action="{{ route('division.number.create', $user->id) }}">
                 {{ csrf_field() }}
 
                 <blockquote class="blockquote text-left">
-                    El numero debe ser de 7 digitos y unico.
+                    El número debe ser de 7 dígitos y único.
                 </blockquote>
 
                 <div class="form-label-group">
                     <input id="number" type="text" class="form-control" name="number" placeholder="Number"
                            value="{{ old('number') }}" required>
-                    <label for="number">Numero</label>
+                    <label for="number">Número</label>
                 </div>
 
                 <button class="btn btn-primary" type="submit"> Crear </button>
@@ -178,7 +179,7 @@
         <div class="container">
 
             <div class="section-title">
-                <h3> Actualiza informacion</h3>
+                <h3> Actualiza información</h3>
             </div>
 
             <form class="form-label-group" method="POST" action="{{ route('division.userInfo.update', $user->id) }}">

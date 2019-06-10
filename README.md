@@ -9,6 +9,6 @@ across multiple  phone companies allowing the users to easily transfer from one 
 
 + Laravel
 
-+ PostgreSQL
++ MySQL
 
 + Bootstrap
